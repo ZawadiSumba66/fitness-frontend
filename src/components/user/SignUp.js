@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { signupUser } from '../../actions/user_action';
-import store from '../../store'
+import store from '../../store';
 
 const SignUp = ({ error }) => {
   const [userName, setUserName] = useState('');
