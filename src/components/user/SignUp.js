@@ -3,8 +3,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { signupUser } from '../../actions/user_action';
+import store from '../../store'
 
-const SignUp = ({ signup, error }) => {
+const SignUp = ({ error }) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +22,7 @@ const SignUp = ({ signup, error }) => {
         password_confirmation: passwordConfirmation,
         avatar,
       };
-      signup(user);
+      store.dispatch(signupUser(user));
       // console.log(user);
     } else {
       window.alert(error);
@@ -81,17 +82,17 @@ const SignUp = ({ signup, error }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  signup: () => dispatch(signupUser),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   signup: () => dispatch(signupUser),
+// });
 
 const mapStateToProps = (state) => ({
   error: state.userReducer.signup_error,
 });
 
 SignUp.propTypes = {
-  signup: PropTypes.func.isRequired,
+  // signup: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps)(SignUp);

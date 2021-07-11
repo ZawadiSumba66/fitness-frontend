@@ -1,4 +1,5 @@
 import { navigate } from '@reach/router';
+import API_BASE from './api_url';
 
 export const GET_TIP = 'GET_TIP';
 export const GET_TIPS = 'GET_TIPS';
@@ -10,7 +11,7 @@ export const fetchTip = (tipId) => (dispatch) => {
   if (localStorage.getItem('token')) {
     const token = localStorage.getItem('token');
 
-    fetch(`https://fitness-api-app.herokuapp.com/api/v1/tips/${tipId}`, {
+    fetch(`${API_BASE}/tips/${tipId}`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
@@ -24,7 +25,7 @@ export const fetchTips = () => (dispatch) => {
   if (localStorage.getItem('token')) {
     const token = localStorage.getItem('token');
 
-    fetch('https://fitness-api-app.herokuapp.com/api/v1/tips', {
+    fetch(`${API_BASE}/tips`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
@@ -42,7 +43,7 @@ export const createTip = (tip) => {
   }
 
   return (dispatch) => {
-    fetch('https://fitness-api-app.herokuapp.com/api/v1/tips', {
+    fetch(`${API_BASE}/tips`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
