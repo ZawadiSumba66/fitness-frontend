@@ -1,5 +1,5 @@
 import { navigate } from '@reach/router';
-
+import API_BASE from './api_url';
 export const GET_FAVORITE = 'GET_FAVORITE';
 export const GET_UNFAVORITE = 'GET_UNFAVORITE';
 export const FAVORITE_ERROR = 'FAVORITE_ERROR';
@@ -7,7 +7,7 @@ export const UNFAVORITE_ERROR = 'UNFAVORITE_ERROR';
 export const GETUSER_FAVORITES = 'GETUSER_FAVORITES';
 
 export const createfavorite = (favorite) => (dispatch) => {
-  fetch('https://fitness-api-app.herokuapp.com/api/v1/tip/favorite', {
+  fetch(`${API_BASE}/tip/favorite`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const createfavorite = (favorite) => (dispatch) => {
 };
 
 export const createUnfavorite = (unfavorite) => (dispatch) => {
-  fetch('https://fitness-api-app.herokuapp.com/api/v1/tip/favorite', {
+  fetch(`${API_BASE}/tip/favorite`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const fetchFavorites = () => (dispatch) => {
   if (localStorage.getItem('token')) {
     const token = localStorage.getItem('token');
 
-    fetch('https://fitness-api-app.herokuapp.com/api/v1/user/favorites', {
+    fetch(`${API_BASE}/user/favorites`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
