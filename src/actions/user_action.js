@@ -1,6 +1,7 @@
 import { navigate } from '@reach/router';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import API_BASE from './api_url';
 
 export const GET_USER = 'GET_USER';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
@@ -15,7 +16,7 @@ export const fetchUser = () => (dispatch) => {
     const token = localStorage.getItem('token');
     const decoded = jwtDecode(token);
     const userId = decoded.sub;
-    fetch(`https://fitness-api-app.herokuapp.com/api/v1/users/${userId}`, {
+    fetch(`${API_BASE}/users/${userId}`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
@@ -43,7 +44,7 @@ export const loginUser = (user) => {
   }
 
   return (dispatch) => {
-    fetch('https://fitness-api-app.herokuapp.com/api/v1/auth', {
+    fetch(`${API_BASE}/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ export const signupUser = (user) => {
   }
 
   return (dispatch) => {
-    axios.post('https://fitness-api-app.herokuapp.com/api/v1/users',
+    axios.post(`${API_BASE}/users`,
       {
         user,
       })
@@ -93,12 +94,12 @@ export const signupUser = (user) => {
         if (response.ok) {
           return response.json();
         }
+        console.log(response);
         throw new Error(response.statusText);
       })
       .then((data) => {
         localStorage.setItem('token', data.token);
         dispatch({ type: SIGNUP_USER, payload: data });
-        console.log(data);
         navigate('/dashboard');
       }).catch((data) => {
         dispatch({ type: SIGNUP_BACKEND_ERROR, payload: data });
