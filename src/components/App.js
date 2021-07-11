@@ -1,9 +1,14 @@
 import './App.css';
-import SignUp from './SignUp';
+import { Router } from '@reach/router';
+import SignUp from './user/SignUp';
+import Login from './user/Login';
 
 const App = () => (
   <div>
-    <SignUp />
+    <Router>
+      <Login path="/login" />
+      <SignUp path="/signup" />
+    </Router>
   </div>
 );
 
