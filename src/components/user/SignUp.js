@@ -20,13 +20,13 @@ const SignUp = ({ error }) => {
     e.preventDefault();
     if (avatar !== '') {
       const user = new FormData();
-      user.append('username', userName);
-      user.append('email', email);
-      user.append('password', password);
-      user.append('password_confirmation', passwordConfirmation);
-      user.append('avatar', avatar);
-      store.dispatch(signupUser(user));
+      user.append('user[username]', userName);
+      user.append('user[email]', email);
+      user.append('user[password]', password);
+      user.append('user[password_confirmation]', passwordConfirmation);
+      user.append('user[avatar]', avatar);
       console.log(user);
+      store.dispatch(signupUser(user));
     } else {
       window.alert(error);
     }
