@@ -25,8 +25,8 @@ const SignUp = ({ error }) => {
       formData.append('user[password]', password);
       formData.append('user[password_confirmation]', passwordConfirmation);
       formData.append('user[avatar]', avatar);
-      console.log(user);
-      store.dispatch(signupUser(user));
+      console.log(formData);
+      store.dispatch(signupUser(formData));
     } else {
       window.alert(error);
     }
