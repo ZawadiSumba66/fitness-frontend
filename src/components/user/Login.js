@@ -12,7 +12,7 @@ const Login = ({ login, errors }) => {
     if (errors) {
       window.alert(errors);
     } else {
-      login()
+      login();
     }
   };
 
