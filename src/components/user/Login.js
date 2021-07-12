@@ -10,9 +10,9 @@ const Login = ({ login, errors }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (errors) {
-      login();
-    } else {
       window.alert(errors);
+    } else {
+      login()
     }
   };
 
