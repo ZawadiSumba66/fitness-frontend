@@ -25,12 +25,12 @@ const SignUp = ({ error }) => {
       // formData.append('user[password]', password);
       // formData.append('user[password_confirmation]', passwordConfirmation);
       // formData.append('user[avatar]', avatar);
-      username: userName,
-      email: email,
-      password: password,
-      password_confirmation: passwordConfirmation,
-      avatar: avatar
-    }
+        username: userName,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+        avatar,
+      };
       console.log(formData);
       store.dispatch(signupUser(formData));
     } else {
