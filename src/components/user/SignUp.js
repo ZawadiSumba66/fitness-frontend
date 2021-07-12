@@ -10,20 +10,23 @@ const SignUp = ({ error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState(null);
+
+  const handleFileUpload = (e) => {
+    setAvatar(e.target.files[0]);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (avatar !== '') {
-      const user = {
-        username: userName,
-        email,
-        password,
-        password_confirmation: passwordConfirmation,
-        avatar,
-      };
+      const user = new FormData();
+      user.append('username', userName);
+      user.append('email', email);
+      user.append('password', password);
+      user.append('password_confirmation', passwordConfirmation);
+      user.append('avatar', avatar);
       store.dispatch(signupUser(user));
-      // console.log(user);
+      console.log(user);
     } else {
       window.alert(error);
     }
@@ -62,7 +65,7 @@ const SignUp = ({ error }) => {
           placeholder="Confirm your password"
         />
         <input
-          onChange={(e) => setAvatar(e.target.files[0])}
+          onChange={handleFileUpload}
           type="file"
           name="avatar"
         />
