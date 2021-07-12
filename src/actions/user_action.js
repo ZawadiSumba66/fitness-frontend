@@ -1,5 +1,5 @@
 import { navigate } from '@reach/router';
-import axios from 'axios';
+// import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import API_BASE from './api_url';
 
@@ -86,10 +86,16 @@ export const signupUser = (user) => {
   }
 
   return (dispatch) => {
-    axios.post(`${API_BASE}/users`,
-      {
+    fetch(`${API_BASE}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
         user,
-      })
+      }),
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
