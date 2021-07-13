@@ -21,12 +21,12 @@ const SignUp = ({ error }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (avatar !== '') {
-      const formData = new FormData();
-      formData.append('username', userName);
-      formData.append('email', email);
-      formData.append('password', password);
-      formData.append('password_confirmation', passwordConfirmation);
-      formData.append('avatar', avatar);
+      const user = new FormData();
+      user.append('username', userName);
+      user.append('email', email);
+      user.append('password', password);
+      user.append('password_confirmation', passwordConfirmation);
+      user.append('avatar', avatar);
       // const user = {
       //   username: userName,
       //   email,
@@ -34,8 +34,8 @@ const SignUp = ({ error }) => {
       //   password_confirmation: passwordConfirmation,
       //   avatar,
       // };
-      console.log(formData);
-      store.dispatch(signupUser(formData));
+      console.log(...user);
+      store.dispatch(signupUser(...user));
     } else {
       window.alert(error);
     }
