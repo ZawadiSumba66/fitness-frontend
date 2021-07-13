@@ -86,12 +86,11 @@ export const signupUser = (user) => {
   }
 
   return (dispatch) => {
-    const token = localStorage.getItem('token');
     fetch(`${API_BASE}/users`, {
       method: 'POST',
-      headers: { 
+      headers: {
         Authorization: localStorage.getItem('token'),
-        Accept: "application/json"
+        Accept: ',application/json',
       },
       body: user,
     })
