@@ -20,16 +20,18 @@ const SignUp = ({ error }) => {
     e.preventDefault();
     if (avatar !== '') {
       const formData = new FormData();
-      formData.append('username', userName);
-      formData.append('email', email);
-      formData.append('password', password);
-      formData.append('password_confirmation', passwordConfirmation);
-      formData.append('avatar', avatar);
-      // username: userName,
-      // email,
-      // password,
-      // password_confirmation: passwordConfirmation,
-      // avatar,
+      formData.append('user[username]', userName);
+      formData.append('user[email]', email);
+      formData.append('user[password]', password);
+      formData.append('user[password_confirmation]', passwordConfirmation);
+      formData.append('user[avatar]', avatar);
+      // const user = {
+      //   username: userName,
+      //   email,
+      //   password,
+      //   password_confirmation: passwordConfirmation,
+      //   avatar,
+      // };
       console.log(formData);
       store.dispatch(signupUser(formData));
     } else {
