@@ -86,7 +86,7 @@ export const signupUser = (user) => {
   }
 
   return (dispatch) => {
-    axios.post(`${API_BASE}/users`, user)
+    axios.post(`${API_BASE}/users`, user, { headers: user.getHeaders() })
       .then((response) => {
         if (response.ok) {
           return response.json();
