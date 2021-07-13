@@ -86,7 +86,7 @@ export const signupUser = (user) => {
   }
 
   return (dispatch) => {
-    fetch(`${API_BASE}/users`,{
+    fetch(`${API_BASE}/users`, {
       method: 'POST',
       body: user,
     })
