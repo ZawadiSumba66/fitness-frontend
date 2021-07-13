@@ -89,7 +89,10 @@ export const signupUser = (user) => {
     const token = localStorage.getItem('token');
     fetch(`${API_BASE}/users`, {
       method: 'POST',
-      headers: { Authorization: `bearer ${token}` },
+      headers: { 
+        Authorization: localStorage.getItem('token'),
+        Accept: "application/json"
+      },
       body: user,
     })
       .then((response) => {
