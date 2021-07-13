@@ -81,7 +81,7 @@ const SignUp = ({ error }) => {
         <input
           type="submit"
           className="main-btn primary-shadow"
-          value="Create Account"
+          value="Sign up"
         />
       </form>
       <p>Have an account?</p>
