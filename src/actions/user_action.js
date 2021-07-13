@@ -88,13 +88,8 @@ export const signupUser = (user) => {
   return (dispatch) => {
     fetch(`${API_BASE}/users`, {
       method: 'POST',
-      headers: {
-        // 'Content-Type': 'application/json',
-        // Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        user,
-      }),
+      headers: {},
+      body: user,
     })
       .then((response) => {
         if (response.ok) {

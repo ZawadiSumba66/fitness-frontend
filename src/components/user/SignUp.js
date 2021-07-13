@@ -40,7 +40,7 @@ const SignUp = ({ error }) => {
   return (
 
     <div>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <form onSubmit={handleSubmit}>
         <input
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
