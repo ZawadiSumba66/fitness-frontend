@@ -47,7 +47,8 @@ export const loginUser = (user) => {
     fetch(`${API_BASE}/auth`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({
         user: {
@@ -85,9 +86,7 @@ export const signupUser = (user) => {
   }
 
   return (dispatch) => {
-    axios.post(`${API_BASE}/users`, {
-      user,
-    })
+    axios.post(`${API_BASE}/users`, user)
       .then((response) => {
         if (response.ok) {
           return response.json();
