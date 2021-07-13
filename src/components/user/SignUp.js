@@ -5,7 +5,7 @@ import { Link } from '@reach/router';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
 
-const FormData = require('form-data');
+// const FormData = require('form-data');
 
 const SignUp = ({ error }) => {
   const [userName, setUserName] = useState('');
