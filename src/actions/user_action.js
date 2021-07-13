@@ -47,8 +47,7 @@ export const loginUser = (user) => {
     fetch(`${API_BASE}/auth`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       body: JSON.stringify({
         user: {
