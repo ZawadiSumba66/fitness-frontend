@@ -19,21 +19,21 @@ const SignUp = ({ error }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (avatar !== '') {
-      // const formData = new FormData();
-      // formData.append('user[username]', userName);
-      // formData.append('user[email]', email);
-      // formData.append('user[password]', password);
-      // formData.append('user[password_confirmation]', passwordConfirmation);
-      // formData.append('user[avatar]', avatar);
-      const user = {
-        username: userName,
-        email,
-        password,
-        password_confirmation: passwordConfirmation,
-        avatar,
-      };
-      console.log(user);
-      store.dispatch(signupUser(user));
+      const formData = new FormData();
+      formData.append('user[username]', userName);
+      formData.append('user[email]', email);
+      formData.append('user[password]', password);
+      formData.append('user[password_confirmation]', passwordConfirmation);
+      formData.append('user[avatar]', avatar);
+      // const user = {
+      //   username: userName,
+      //   email,
+      //   password,
+      //   password_confirmation: passwordConfirmation,
+      //   avatar,
+      // };
+      console.log(formData);
+      store.dispatch(signupUser(formData));
     } else {
       window.alert(error);
     }
@@ -68,7 +68,7 @@ const SignUp = ({ error }) => {
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           type="password"
-          name="passwordconfirmation"
+          name="password_confirmation"
           placeholder="Confirm your password"
         />
         <input
