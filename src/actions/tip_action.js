@@ -45,18 +45,7 @@ export const createTip = (tip) => {
   return (dispatch) => {
     fetch(`${API_BASE}/tips`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        tip: {
-          name: tip.name,
-          instructions: tip.instructions,
-          description: tip.description,
-          benefits: tip.benefits,
-          image: tip.image,
-        },
-      }),
+      body: tip,
     })
       .then((resp) => {
         if (resp.ok) {

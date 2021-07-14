@@ -4,7 +4,6 @@ import {
 } from '../actions/user_action';
 
 const initialState = {
-  users: [],
   login_error: '',
   signup_error: '',
   user: [],
@@ -15,7 +14,7 @@ const userReducer = (state = initialState, action) => {
     case GET_USER:
       return {
         ...state,
-        users: action.payload.user,
+        user: action.payload.user,
         getuser_error: '',
       };
     case LOGIN_USER:
@@ -36,7 +35,7 @@ const userReducer = (state = initialState, action) => {
       };
     case SIGNUP_ERROR:
       return {
-        signup_error: action.payload,
+        signup_error: action.payload.error,
       };
     case SIGNUP_BACKEND_ERROR:
       return {

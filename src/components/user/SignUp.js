@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
+import { navigate, Link } from '@reach/router';
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
-
-// const FormData = require('form-data');
 
 const SignUp = ({ error }) => {
   const [userName, setUserName] = useState('');
@@ -21,21 +19,22 @@ const SignUp = ({ error }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (avatar !== '') {
-      const user = new FormData();
-      user.append('username', userName);
-      user.append('email', email);
-      user.append('password', password);
-      user.append('password_confirmation', passwordConfirmation);
-      user.append('avatar', avatar);
-      // const user = {
-      //   username: userName,
-      //   email,
-      //   password,
-      //   password_confirmation: passwordConfirmation,
-      //   avatar,
-      // };
-      console.log(...user);
-      store.dispatch(signupUser(...user));
+      // const user = new FormData();
+      // user.append('username', userName);
+      // user.append('email', email);
+      // user.append('password', password);
+      // user.append('password_confirmation', passwordConfirmation);
+      // user.append('avatar', avatar);
+      const user = {
+        username: userName,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+        avatar,
+      };
+      console.log(user);
+      store.dispatch(signupUser(user));
+      navigate('/dashboard');
     } else {
       window.alert(error);
     }

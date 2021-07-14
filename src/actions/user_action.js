@@ -100,7 +100,6 @@ export const signupUser = (user) => {
       .then((data) => {
         localStorage.setItem('token', data.token);
         dispatch({ type: SIGNUP_USER, payload: data });
-        navigate('/dashboard');
       }).catch((data) => {
         dispatch({ type: SIGNUP_BACKEND_ERROR, payload: data });
       });
