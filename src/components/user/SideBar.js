@@ -64,8 +64,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 SideBar.propTypes = {
-  user: PropTypes.instanceOf(Array).isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
   getuser: PropTypes.func.isRequired,
 };
+
+// SideBar.defaultProps = {
+//   user: 'janedoe',
+// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

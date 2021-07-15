@@ -6,7 +6,7 @@ import { signupUser } from '../../actions/user_action';
 import store from '../../store';
 
 const SignUp = ({ error }) => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -26,7 +26,7 @@ const SignUp = ({ error }) => {
       // user.append('password_confirmation', passwordConfirmation);
       // user.append('avatar', avatar);
       const user = {
-        username: userName,
+        username,
         email,
         password,
         password_confirmation: passwordConfirmation,
@@ -45,8 +45,8 @@ const SignUp = ({ error }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           type="text"
           name="username"
           placeholder="Enter your username"

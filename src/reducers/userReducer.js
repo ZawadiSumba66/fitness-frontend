@@ -6,24 +6,26 @@ import {
 const initialState = {
   login_error: '',
   signup_error: '',
-  user: [],
+  user: {},
   getuser_error: '',
+  loginuser: [],
+  signupuser: [],
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
       return {
         ...state,
-        user: action.payload.user,
+        user: action.payload,
         getuser_error: '',
       };
     case LOGIN_USER:
       return {
-        user: action.payload,
+        loginuser: action.payload,
       };
     case SIGNUP_USER:
       return {
-        user: action.payload,
+        signupuser: action.payload,
       };
     case LOGIN_ERROR:
       return {
