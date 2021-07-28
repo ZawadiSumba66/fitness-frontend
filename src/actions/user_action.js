@@ -21,13 +21,10 @@ export const fetchUser = () => async (dispatch) => {
     userId = decoded.sub;
     console.log(userId);
   }
-  axios.get(`${API_BASE}/users/${userId}`, {
-    headers: {
-      Authorization: `token ${localStorage.getItem('token')}`,
-    },
-  }).then((response) => {
-    dispatch({ type: GET_USER, payload: response.data });
-  })
+  axios.get(`${API_BASE}/users/${userId}`)
+    .then((response) => {
+      dispatch({ type: GET_USER, payload: response.data });
+    })
     .catch((error) => {
       dispatch({ type: GETUSER_ERROR, payload: error });
     });

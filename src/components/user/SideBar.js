@@ -7,10 +7,10 @@ import { fetchUser } from '../../actions/user_action';
 
 const SideBar = ({ user, getuser }) => {
   const logOut = () => localStorage.clear();
-  useEffect(() => {
+  useEffect(async () => {
     getuser();
     console.log(user);
-  }, []);
+  });
   if (!user) {
     return <h1>loading</h1>;
   }
