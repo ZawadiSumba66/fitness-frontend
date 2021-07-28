@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { navigate } from '@reach/router';
 import store from '../../store';
 import { createTip, fetchTips } from '../../actions/tip_action';
 
@@ -35,6 +36,7 @@ const CreateTips = ({ error }) => {
       };
       console.log(tip);
       store.dispatch(createTip(fetchTips));
+      navigate('/tips');
     } else {
       window.alert(error);
     }

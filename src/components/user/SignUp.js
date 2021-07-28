@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { navigate, Link } from '@reach/router';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
 
-const SignUp = ({ error }) => {
+const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,26 +18,22 @@ const SignUp = ({ error }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (avatar !== '') {
-      // const user = new FormData();
-      // user.append('username', userName);
-      // user.append('email', email);
-      // user.append('password', password);
-      // user.append('password_confirmation', passwordConfirmation);
-      // user.append('avatar', avatar);
-      const user = {
-        username,
-        email,
-        password,
-        password_confirmation: passwordConfirmation,
-        avatar,
-      };
-      console.log(user);
-      store.dispatch(signupUser(user));
-      navigate('/dashboard');
-    } else {
-      window.alert(error);
-    }
+    // const user = new FormData();
+    // user.append('username', username);
+    // user.append('email', email);
+    // user.append('password', password);
+    // user.append('password_confirmation', passwordConfirmation);
+    // user.append('avatar', avatar);
+    const user = {
+      username,
+      email,
+      password,
+      password_confirmation: passwordConfirmation,
+      avatar,
+    };
+    console.log(user);
+    store.dispatch(signupUser(user));
+    navigate('/dashboard');
   };
 
   return (
@@ -103,7 +99,7 @@ const mapStateToProps = (state) => ({
 
 SignUp.propTypes = {
   // signup: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
+  // error: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(SignUp);

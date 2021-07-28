@@ -13,23 +13,24 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const GETUSER_ERROR = 'GETUSER_ERROR';
 
-export const fetchUser = () => (dispatch) => {
-  if (localStorage.getItem('token')) {
-    const token = localStorage.getItem('token');
+export const fetchUser = () => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  let userId;
+  if (token) {
     const decoded = jwtDecode(token);
-    const userId = decoded.sub;
-    axios.get(`${API_BASE}/users/${userId}`)
-      .then((response) => {
-        if (response.data) {
-          dispatch({ type: GET_USER, payload: response.data.user });
-          console.log(response.data);
-        }
-        throw new Error(response.statusText);
-      })
-      .catch((data) => {
-        dispatch({ type: GETUSER_ERROR, payload: data });
-      });
+    userId = decoded.sub;
+    console.log(userId);
   }
+  axios.get(`${API_BASE}/users/${userId}`, {
+    headers: {
+      Authorization: `token ${localStorage.getItem('token')}`,
+    },
+  }).then((response) => {
+    dispatch({ type: GET_USER, payload: response.data });
+  })
+    .catch((error) => {
+      dispatch({ type: GETUSER_ERROR, payload: error });
+    });
 };
 
 export const loginUser = (user) => {
@@ -45,7 +46,7 @@ export const loginUser = (user) => {
     })
       .then((response) => {
         if (response.ok) {
-          localStorage.setItem('token', response.data.jwt);
+          localStorage.setItem('token', response.data.token);
           dispatch({ type: LOGIN_USER, payload: response.data });
           navigate('/dashboard');
         }
@@ -64,17 +65,18 @@ export const signupUser = (user) => {
     };
   }
   return (dispatch) => {
+    // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     axios.post(`${API_BASE}/users`, {
       user,
     })
       .then((response) => {
-        if (response.ok) {
+        if (response.data) {
           localStorage.setItem('token', response.data.token);
+          console.log(response.data.token);
           dispatch({ type: SIGNUP_USER, payload: response.data });
         }
-        throw new Error(response.statusText);
-      }).catch((data) => {
-        dispatch({ type: SIGNUP_BACKEND_ERROR, payload: data });
+      }).catch((error) => {
+        dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error });
       });
   };
 };

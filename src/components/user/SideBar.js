@@ -9,7 +9,11 @@ const SideBar = ({ user, getuser }) => {
   const logOut = () => localStorage.clear();
   useEffect(() => {
     getuser();
+    console.log(user);
   }, []);
+  if (!user) {
+    return <h1>loading</h1>;
+  }
   return (
     <Menu className="d-flex flex-column justify-content-between">
       <div className="d-flex flex-column mb-5">
@@ -22,6 +26,9 @@ const SideBar = ({ user, getuser }) => {
           <h2 className="my-2 text-center user-name menu-item">
             {user.username}
           </h2>
+          <p>
+            {user.email}
+          </p>
         </div>
         <div className="d-flex flex-column">
           <Link
@@ -64,7 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 SideBar.propTypes = {
-  user: PropTypes.instanceOf(Object).isRequired,
+  user: PropTypes.instanceOf(Array).isRequired,
   getuser: PropTypes.func.isRequired,
 };
 
