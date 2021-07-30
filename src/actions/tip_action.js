@@ -6,6 +6,7 @@ export const GET_TIPS = 'GET_TIPS';
 export const CREATE_TIP_ERROR = 'CREATE_TIP_ERROR';
 export const CREATE_ERROR = 'CREATE_ERROR';
 export const CREATE_TIP = 'CREATE_TIP';
+export const GETTIPS_ERROR = 'GETTIPS_ERROR';
 
 export const fetchTip = (tipId) => (dispatch) => {
   if (localStorage.getItem('token')) {
@@ -25,33 +26,43 @@ export const fetchTips = () => (dispatch) => {
   if (localStorage.getItem('token')) {
     const token = localStorage.getItem('token');
 
-    fetch(`${API_BASE}/tips`, {
+    axios.get(`${API_BASE}/tips`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
     })
-      .then((resp) => resp.json())
-      .then((data) => dispatch({ type: GET_TIPS, payload: data }));
+      .then((response) => {
+        dispatch({ type: GET_TIPS, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: GETTIPS_ERROR, payload: error });
+      });
   }
 };
 
 export const createTip = (tip) => {
-  if ((!tip.name) || (!tip.description) || (!tip.instructions) || (!tip.benefits) || (!tip.image)) {
+  console.log(tip);
+  if ((!tip.title) || (!tip.description)
+   || (!tip.instructions) || (!tip.benefits) || (!tip.image)) {
     return (dispatch) => {
       dispatch({ type: CREATE_ERROR, payload: 'Please enter all fields.' });
     };
   }
 
   return (dispatch) => {
+    const token = localStorage.getItem('token');
+    console.log(token);
     axios.post(`${API_BASE}/tips`, {
-      tip,
+      data: tip,
+      headers: {
+        Authorization: `token ${token}`,
+      },
     })
       .then((response) => {
-        if (response.ok) {
-          localStorage.setItem('token', response.data.jwt);
+        if (response.data) {
+          console.log(response.data);
           dispatch({ type: CREATE_TIP, payload: response.data });
         }
-        throw new Error(response.statusText);
       })
       .catch((data) => {
         dispatch({ type: CREATE_TIP_ERROR, payload: data });

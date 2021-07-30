@@ -13,7 +13,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const GETUSER_ERROR = 'GETUSER_ERROR';
 
-export const fetchUser = () => async (dispatch) => {
+export const fetchUser = () => (dispatch) => {
   const token = localStorage.getItem('token');
   let userId;
   if (token) {
@@ -63,15 +63,18 @@ export const signupUser = (user) => {
   }
   return (dispatch) => {
     // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-    axios.post(`${API_BASE}/users`, {
+    fetch(`${API_BASE}/users`, {
       user,
+      headers: {
+        accepts: 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
     })
-      .then((response) => {
-        if (response.data) {
-          localStorage.setItem('token', response.data.token);
-          console.log(response.data.token);
-          dispatch({ type: SIGNUP_USER, payload: response.data });
-        }
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        console.log(data.token);
+        dispatch({ type: SIGNUP_USER, payload: data });
       }).catch((error) => {
         dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error });
       });

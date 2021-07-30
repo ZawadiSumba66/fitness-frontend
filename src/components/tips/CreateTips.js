@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import store from '../../store';
-import { createTip, fetchTips } from '../../actions/tip_action';
+import { createTip } from '../../actions/tip_action';
 
-// const FormData = require('form-data');
-
-const CreateTips = ({ error }) => {
+const CreateTips = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [benefits, setBenefits] = useState('');
@@ -20,26 +18,22 @@ const CreateTips = ({ error }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (image !== '') {
-      // const user = new FormData();
-      // user.append('username', userName);
-      // user.append('email', email);
-      // user.append('password', password);
-      // user.append('password_confirmation', passwordConfirmation);
-      // user.append('avatar', avatar);
-      const tip = {
-        title,
-        description,
-        benefits,
-        instructions,
-        image,
-      };
-      console.log(tip);
-      store.dispatch(createTip(fetchTips));
-      navigate('/tips');
-    } else {
-      window.alert(error);
-    }
+    // const user = new FormData();
+    // user.append('username', userName);
+    // user.append('email', email);
+    // user.append('password', password);
+    // user.append('password_confirmation', passwordConfirmation);
+    // user.append('avatar', avatar);
+    const tip = {
+      title,
+      description,
+      benefits,
+      instructions,
+      image,
+    };
+    console.log(tip);
+    store.dispatch(createTip(tip));
+    navigate('/tips');
   };
 
   return (
@@ -88,17 +82,16 @@ const CreateTips = ({ error }) => {
   );
 };
 
-// const mapDispatchToProps = (dispatch) => ({
-//   signup: () => dispatch(signupUser),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  createtip: () => dispatch(createTip),
+});
 
 const mapStateToProps = (state) => ({
   error: state.tipsReducer.error,
 });
 
-CreateTips.propTypes = {
-  // signup: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
-};
-
-export default connect(mapStateToProps)(CreateTips);
+// CreateTips.propTypes = {
+//   createtip: PropTypes.func.isRequired,
+//   // error: PropTypes.string.isRequired,
+// };
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTips);
