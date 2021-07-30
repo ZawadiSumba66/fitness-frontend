@@ -19,11 +19,11 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // const user = new FormData();
-    // user.append('user[username]', username);
-    // user.append('user[email]', email);
-    // user.append('user[password]', password);
-    // user.append('user[password_confirmation]', passwordConfirmation);
-    // user.append('user[avatar]', avatar);
+    // user.append('username', username);
+    // user.append('email', email);
+    // user.append('password', password);
+    // user.append('password_confirmation', passwordConfirmation);
+    // user.append('avatar', avatar);
     const user = {
       username,
       email,
