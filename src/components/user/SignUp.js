@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import { navigate, Link } from '@reach/router';
+import { Link } from '@reach/router';
 // import PropTypes from 'prop-types';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
@@ -33,7 +33,6 @@ const SignUp = () => {
     };
     console.log(user);
     store.dispatch(signupUser(user));
-    navigate('/dashboard');
   };
 
   return (

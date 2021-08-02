@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { navigate } from '@reach/router';
 import API_BASE from './api_url';
 
 export const GET_TIP = 'GET_TIP';
@@ -50,18 +51,17 @@ export const createTip = (tip) => {
   }
 
   return (dispatch) => {
-    const token = localStorage.getItem('token');
-    console.log(token);
     axios.post(`${API_BASE}/tips`, {
-      data: tip,
+      tip,
       headers: {
-        Authorization: `token ${token}`,
+        Authorization: `token ${localStorage.getItem('token')}`,
       },
     })
       .then((response) => {
-        if (response.data) {
-          console.log(response.data);
+        if (response) {
+          console.log(response);
           dispatch({ type: CREATE_TIP, payload: response.data });
+          navigate('/tips');
         }
       })
       .catch((data) => {

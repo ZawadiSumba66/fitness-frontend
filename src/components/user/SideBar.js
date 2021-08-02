@@ -1,24 +1,19 @@
 import { slide as Menu } from 'react-burger-menu';
-import { Link } from '@reach/router';
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from '@reach/router';
 import { fetchUser } from '../../actions/user_action';
 
-const SideBar = ({ user, getuser }) => {
+const SideBar = ({ user }) => {
+  const dispatch = useDispatch();
   const logOut = () => localStorage.clear();
-  // useEffect(() => {
-  //   getuser();
-  //   console.log(user);
-  // }, []);
-  const getUserInfo = async () => {
-    getuser();
-  };
   useEffect(() => {
-    getUserInfo();
+    dispatch(fetchUser());
   }, []);
+
   if (!user) {
-    return <h1>loading</h1>;
+    return <h1>Loading...</h1>;
   }
   return (
     <Menu className="d-flex flex-column justify-content-between">
@@ -72,17 +67,17 @@ const mapStateToProps = (state) => ({
   user: state.userReducer.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getuser: () => dispatch(fetchUser()),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   getuser: () => dispatch(fetchUser()),
+// });
 
 SideBar.propTypes = {
   user: PropTypes.instanceOf(Array).isRequired,
-  getuser: PropTypes.func.isRequired,
+  // getuser: PropTypes.func.isRequired,
 };
 
 // SideBar.defaultProps = {
 //   user: 'janedoe',
 // };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default connect(mapStateToProps, null)(SideBar);

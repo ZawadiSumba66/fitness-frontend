@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { loginUser } from '../../actions/user_action';
+import store from '../../store';
 
-const Login = ({ login, errors }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (errors) {
-      window.alert(errors);
-    } else {
-      login();
-    }
+    const user = {
+      email,
+      password,
+    };
+    store.dispatch(loginUser(user));
   };
 
   return (
@@ -34,9 +35,11 @@ const Login = ({ login, errors }) => {
           name="password"
           placeholder="Password"
         />
-        <button type="submit">
-          Login
-        </button>
+        <input
+          type="submit"
+          className="main-btn primary-shadow"
+          value="Log in"
+        />
       </form>
       <p>Don`t have an account?</p>
       <Link
@@ -52,13 +55,12 @@ const mapStateToProps = (state) => ({
   errors: state.userReducer.login_error,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  login: () => dispatch(loginUser),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   login: () => dispatch(loginUser()),
+// });
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired,
-};
+// Login.propTypes = {
+//   errors: PropTypes.string.isRequired,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps)(Login);

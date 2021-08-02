@@ -21,7 +21,11 @@ export const fetchUser = () => (dispatch) => {
     userId = decoded.sub;
     console.log(userId);
   }
-  axios.get(`${API_BASE}/users/${userId}`)
+  axios.get(`${API_BASE}/users/${userId}`, {
+    headers: {
+      Authorization: `token ${localStorage.getItem('token')}`,
+    },
+  })
     .then((response) => {
       dispatch({ type: GET_USER, payload: response.data });
     })
@@ -31,7 +35,7 @@ export const fetchUser = () => (dispatch) => {
 };
 
 export const loginUser = (user) => {
-  if ((!user.username) || (!user.password)) {
+  if ((!user.email) || (!user.password)) {
     return (dispatch) => {
       dispatch({ type: LOGIN_ERROR, payload: 'Please enter both Username and Password.' });
     };
@@ -42,12 +46,13 @@ export const loginUser = (user) => {
       user,
     })
       .then((response) => {
-        if (response.ok) {
+        if (response.data.token) {
           localStorage.setItem('token', response.data.token);
           dispatch({ type: LOGIN_USER, payload: response.data });
-          navigate('/dashboard');
+          setTimeout(() => {
+            navigate('/dashboard');
+          });
         }
-        throw new Error(response.statusText);
       })
       .catch((data) => {
         dispatch({ type: LOGIN_BACKEND_ERROR, payload: data });
@@ -62,15 +67,17 @@ export const signupUser = (user) => {
     };
   }
   return (dispatch) => {
-    // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     axios.post(`${API_BASE}/users`, {
       user,
     })
       .then((response) => {
-        if (response.data) {
+        if (response.data.token) {
           localStorage.setItem('token', response.data.token);
           console.log(response.data.token);
           dispatch({ type: SIGNUP_USER, payload: response.data });
+          setTimeout(() => {
+            navigate('/dashboard');
+          }, 1000);
         }
       }).catch((error) => {
         dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error });
