@@ -19,7 +19,12 @@ const Login = () => {
 
   return (
 
-    <div>
+    <div className="d-flex flex-column signup-form w-50 mx-auto">
+      <div>
+        <i className="fas fa-heartbeat" />
+        <span className="font-weight-bold">KEEP IT FIT</span>
+      </div>
+      <p> Welcome Back! Lets continue with our journey of keeping fit</p>
       <form onSubmit={handleSubmit}>
         <input
           value={email}
@@ -27,6 +32,7 @@ const Login = () => {
           type="email"
           name="email"
           placeholder="Enter your email"
+          className="form-control mt-3"
         />
         <input
           value={password}
@@ -34,16 +40,18 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Password"
+          className="form-control mt-3"
         />
         <input
           type="submit"
-          className="main-btn primary-shadow"
           value="Log in"
+          className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
         />
       </form>
-      <p>Don`t have an account?</p>
+      <p className="pt-5 text-center">Don`t have an account?</p>
       <Link
         to="/signup"
+        className="text-center"
       >
         SignUp
       </Link>

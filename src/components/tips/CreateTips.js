@@ -3,6 +3,8 @@ import { useState } from 'react';
 // import PropTypes from 'prop-types';
 import store from '../../store';
 import { createTip } from '../../actions/tip_action';
+import DashboardLeft from '../user/DashboardLeft';
+import Flash from '../user/Flash';
 
 const CreateTips = () => {
   const [title, setTitle] = useState('');
@@ -11,18 +13,12 @@ const CreateTips = () => {
   const [instructions, setInstructions] = useState('');
   const [image, setImage] = useState(null);
 
-  const handleFileUpload = (e) => {
-    setImage(e.target.files[0]);
+  const handleFileUpload = (files) => {
+    setImage(files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const user = new FormData();
-    // user.append('username', userName);
-    // user.append('email', email);
-    // user.append('password', password);
-    // user.append('password_confirmation', passwordConfirmation);
-    // user.append('avatar', avatar);
     const tip = {
       title,
       description,
@@ -30,52 +26,70 @@ const CreateTips = () => {
       instructions,
       image,
     };
-    console.log(tip);
     store.dispatch(createTip(tip));
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          type="text"
-          name="title"
-          placeholder="Enter the Title"
-        />
-        <input
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          type="textarea"
-          name="description"
-          placeholder="Enter a Description"
-        />
-        <input
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-          type="textarea"
-          name="instructions"
-          placeholder="Add some instructions to follow"
-        />
-        <input
-          value={benefits}
-          onChange={(e) => setBenefits(e.target.value)}
-          type="textarea"
-          name="benefits"
-          placeholder="What are some of the benefits a user wil gain"
-        />
-        <input
-          onChange={handleFileUpload}
-          type="file"
-          name="image"
-        />
-        <input
-          type="submit"
-          className="main-btn primary-shadow"
-          value="Create a tip"
-        />
-      </form>
+      <DashboardLeft />
+      <div className="user__info p-3">
+        <div className="rounded p-3 mt-4">
+          <Flash />
+        </div>
+      </div>
+      <div className="create-tips">
+        <form onSubmit={handleSubmit}>
+          <div className="row mx-auto w-50 bg-white p-5">
+            <h3>Create Fitness Tips</h3>
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              name="title"
+              placeholder="Enter the Title"
+              className="form-control"
+              rows="3"
+            />
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              name="description"
+              placeholder="Enter a brief description"
+              className="form-control mt-3"
+              rows="3"
+            />
+            <textarea
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              name="instructions"
+              placeholder="Add some instructions to follow"
+              className="form-control mt-3"
+              rows="3"
+            />
+            <textarea
+              value={benefits}
+              onChange={(e) => setBenefits(e.target.value)}
+              name="benefits"
+              placeholder="What are some of the benefits a user will gain"
+              className="form-control mt-3"
+              rows="3"
+            />
+            <div className="d-flex flex-column pt-2">
+              <input
+                onChange={(e) => handleFileUpload(e.target.files)}
+                type="file"
+                name="image"
+              />
+              <br />
+              <input
+                type="submit"
+                className="button-orange text-light btn font-weight-bold"
+                value="Submit"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

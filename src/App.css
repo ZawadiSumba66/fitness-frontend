@@ -1,0 +1,134 @@
+body {
+  overflow-x: hidden;
+}
+
+.main {
+  background-image: url('./assets/main-bg.jpg');
+  background-size: cover;
+  height: 95vh;
+}
+
+.button-orange {
+  background-color: #EC5200;
+  border-radius: 20px;
+}
+
+.button-nav {
+  border-radius: 20px;
+}
+
+.user-name {
+  cursor: pointer;
+}
+
+.second_image {
+  width: 600px;
+  height: 400px
+}
+
+.third_image {
+  width: 500px;
+  height: 300px
+}
+
+.third_section_wrapper {
+  background-color: #E7F0FF;
+  padding: 0 40px;
+}
+
+.fab {
+  padding-left: 10px;
+  font-size: 25px;
+  color: #27569C;
+}
+
+.fa-twitter {
+  color: #00AFF1;
+}
+
+.fas {
+  font-size: 30px;
+  color: #EC5200;
+}
+
+.font-footer {
+  font-size: 10px;
+}
+
+.signup-form {
+  padding-top: 50px;
+}
+
+.text-orange {
+  color: #EC5200;
+}
+
+.horizontal {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.close {
+  color: black;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.alert__wrapper {
+  max-width: 900px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+  color: black;
+}
+
+.alert__wrapper-auth {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 20px;
+  top: 26px;
+}
+
+.sidebar-wrapper {
+  position: relative;
+}
+
+.bm-burger-bars {
+  background: #000;
+  border: none;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.text-box {
+  height: 100px;
+}
+
+.create-tips {
+  background-color: #F6FAFB;
+  height: 100vh
+}
+
+.infoCarousel__wrapper-desc-info {
+  max-width: 600px;
+  height: 40vh;
+}
+.infoCarousel__wrapper-detail {
+  max-width: 900px;
+} 
+
+.carousel-indicators > li  {
+  background-color: #EC5200;
+}

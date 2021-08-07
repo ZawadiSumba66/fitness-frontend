@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
       return {
-        user: action.payload.user,
+        user: action.payload,
       };
     case LOGIN_USER:
       return {

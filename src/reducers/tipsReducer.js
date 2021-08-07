@@ -6,13 +6,14 @@ const initialState = {
   tips: [],
   error: '',
   tip: [],
+  create_tips: [],
 };
 
 const tipsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TIPS:
       return {
-        tips: action.payload.tips,
+        tips: action.payload,
       };
     case GET_TIP:
       return {
@@ -20,7 +21,7 @@ const tipsReducer = (state = initialState, action) => {
       };
     case CREATE_TIP:
       return {
-        tips: action.payload,
+        create_tips: action.payload,
       };
     case CREATE_TIP_ERROR:
       return {

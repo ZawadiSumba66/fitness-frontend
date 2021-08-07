@@ -19,7 +19,6 @@ export const fetchUser = () => (dispatch) => {
   if (token) {
     const decoded = jwtDecode(token);
     userId = decoded.sub;
-    console.log(userId);
   }
   axios.get(`${API_BASE}/users/${userId}`, {
     headers: {
@@ -61,7 +60,8 @@ export const loginUser = (user) => {
 };
 
 export const signupUser = (user) => {
-  if ((!user.username) || (!user.email) || (!user.password_confirmation) || (!user.password)) {
+  if ((!user.username) || (!user.email)
+  || (!user.password_confirmation) || (!user.password) || (!user.image)) {
     return (dispatch) => {
       dispatch({ type: SIGNUP_ERROR, payload: 'Please enter all fields.' });
     };
@@ -73,12 +73,12 @@ export const signupUser = (user) => {
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem('token', response.data.token);
-          console.log(response.data.token);
           dispatch({ type: SIGNUP_USER, payload: response.data });
           setTimeout(() => {
             navigate('/dashboard');
           }, 1000);
         }
+        return response;
       }).catch((error) => {
         dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error });
       });

@@ -10,34 +10,32 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [avatar, setAvatar] = useState(null);
+  const [image, setImage] = useState(null);
 
   const handleFileUpload = (e) => {
-    setAvatar(e.target.files[0]);
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const user = new FormData();
-    // user.append('username', username);
-    // user.append('email', email);
-    // user.append('password', password);
-    // user.append('password_confirmation', passwordConfirmation);
-    // user.append('avatar', avatar);
     const user = {
       username,
       email,
       password,
       password_confirmation: passwordConfirmation,
-      avatar,
+      image,
     };
-    console.log(user);
     store.dispatch(signupUser(user));
   };
 
   return (
 
-    <div>
+    <div className="d-flex flex-column signup-form w-50 mx-auto">
+      <div>
+        <i className="fas fa-heartbeat" />
+        <span className="font-weight-bold">KEEP IT FIT</span>
+      </div>
+      <p> Hi there! Sign up and start looking for fitness healthy tips that you can practise</p>
       <form onSubmit={handleSubmit}>
         <input
           value={username}
@@ -45,6 +43,7 @@ const SignUp = () => {
           type="text"
           name="username"
           placeholder="Enter your username"
+          className="form-control"
         />
         <input
           value={email}
@@ -52,6 +51,7 @@ const SignUp = () => {
           type="email"
           name="email"
           placeholder="Enter your email"
+          className="form-control mt-3"
         />
         <input
           value={password}
@@ -59,6 +59,7 @@ const SignUp = () => {
           type="password"
           name="password"
           placeholder="Password"
+          className="form-control mt-3"
         />
         <input
           value={passwordConfirmation}
@@ -66,21 +67,25 @@ const SignUp = () => {
           type="password"
           name="password_confirmation"
           placeholder="Confirm your password"
+          className="form-control mt-3"
         />
         <input
           onChange={handleFileUpload}
           type="file"
-          name="avatar"
+          name="image"
+          className="mt-3"
         />
+        <br />
         <input
           type="submit"
-          className="main-btn primary-shadow"
+          className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
           value="Sign up"
         />
       </form>
-      <p>Have an account?</p>
+      <p className="pt-5 text-center">Have an account?</p>
       <Link
         to="/login"
+        className="text-center"
       >
         Login
       </Link>
