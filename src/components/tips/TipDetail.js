@@ -56,7 +56,7 @@ const TipDetail = ({ tip, id }) => {
             </div>
 
             <div className="my-2 d-flex justify-content-between more-details">
-              <div className="mr-5">
+              <div>
                 <div className="d-flex align-items-center">
                   <div className="px-2">
                     <p className="font-weight-bold text-uppercase">Instructions</p>
@@ -64,7 +64,7 @@ const TipDetail = ({ tip, id }) => {
                   </div>
                 </div>
               </div>
-              <div className="r">
+              <div>
                 <div className="d-flex align-items-center">
                   <div className="px-2">
                     <p className="font-weight-bold text-uppercase">Benefits</p>

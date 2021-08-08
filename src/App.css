@@ -143,7 +143,7 @@ body {
 
 .infoCarousel__wrapper-desc-info {
   max-width: 600px;
-  height: 40vh;
+  height: 50vh;
 }
 .infoCarousel__wrapper-detail {
   max-width: 900px;
@@ -155,7 +155,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .main {
-    height: 60vh
+    height: 70vh
   }
   .second_image {
     margin-top: 3rem;
