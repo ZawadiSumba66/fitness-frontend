@@ -153,9 +153,15 @@ body {
   background-color: #EC5200;
 }
 
+@media screen and (max-width: 1024px) {
+.third_image {
+  width: 100%;
+}
+}
+
 @media screen and (max-width: 768px) {
   .main {
-    height: 70vh
+    height: 75vh
   }
   .second_image {
     margin-top: 3rem;

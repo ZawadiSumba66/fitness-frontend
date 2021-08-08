@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
+import { Alert } from 'react-bootstrap';
 import { loginUser } from '../../actions/user_action';
 import store from '../../store';
 import Flash from './Flash';
@@ -11,14 +12,11 @@ const Login = ({ errors }) => {
   const [password, setPassword] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!errors) {
-      const user = {
-        email,
-        password,
-      };
-      store.dispatch(loginUser(user));
-    }
-    window.flash(errors, 'warning');
+    const user = {
+      email,
+      password,
+    };
+    store.dispatch(loginUser(user));
   };
 
   return (
@@ -30,6 +28,17 @@ const Login = ({ errors }) => {
       </div>
       <p> Welcome Back! Lets continue with our journey of keeping fit</p>
       <Flash />
+      <div className="errors">
+        {errors ? (
+          ''
+        ) : (
+          <div>
+            <Alert key="7" variant="danger">
+              <li className="text-dark font-weight-bold">Invalid email or password</li>
+            </Alert>
+          </div>
+        )}
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           value={email}
@@ -65,11 +74,11 @@ const Login = ({ errors }) => {
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.userReducer.login_error,
+  errors: state.userReducer.login_backend_error,
 });
 
 Login.propTypes = {
-  errors: PropTypes.string.isRequired,
+  errors: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default connect(mapStateToProps)(Login);

@@ -33,7 +33,7 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGIN_BACKEND_ERROR:
       return {
-        login_backend_error: action.payload,
+        login_backend_error: action.payload.data,
       };
     case SIGNUP_ERROR:
       return {
@@ -41,7 +41,7 @@ const userReducer = (state = initialState, action) => {
       };
     case SIGNUP_BACKEND_ERROR:
       return {
-        signup_backend_error: action.payload.errors,
+        signup_backend_error: action.payload.data.message,
       };
     default:
       return state;

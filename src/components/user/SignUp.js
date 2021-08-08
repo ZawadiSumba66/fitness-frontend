@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { Link } from '@reach/router';
-// import { Alert } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
 import Flash from './Flash';
 
-const SignUp = ({ errors, backend }) => {
+const SignUp = ({ backend }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,17 +20,14 @@ const SignUp = ({ errors, backend }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!errors) {
-      const user = {
-        username,
-        email,
-        password,
-        password_confirmation: passwordConfirmation,
-        image,
-      };
-      store.dispatch(signupUser(user));
-    }
-    window.flash(errors, 'warning');
+    const user = {
+      username,
+      email,
+      password,
+      password_confirmation: passwordConfirmation,
+      image,
+    };
+    store.dispatch(signupUser(user));
   };
   console.log(backend);
   return (
@@ -42,18 +39,19 @@ const SignUp = ({ errors, backend }) => {
       </div>
       <p> Hi there! Sign up and start looking for fitness healthy tips that you can practise</p>
       <Flash />
-      <div className="errors w-100">
-        {/* {backend.length > 0 ? (
+      <br />
+      <div className="errors">
+        {backend ? (
           <div>
             <Alert key="6" variant="danger">
-              {backend.data.message.map((item) => (
-                <li key={Date.now() * Math.random()}>{item}</li>
+              {backend.map((item) => (
+                <li className="text-dark font-weight-bold" key={Date.now() * Math.random()}>{item}</li>
               ))}
             </Alert>
           </div>
         ) : (
           ''
-        )} */}
+        )}
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -113,13 +111,11 @@ const SignUp = ({ errors, backend }) => {
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.userReducer.signup_error,
   backend: state.userReducer.signup_backend_error,
 });
 
 SignUp.propTypes = {
   backend: PropTypes.instanceOf(Array).isRequired,
-  errors: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(SignUp);

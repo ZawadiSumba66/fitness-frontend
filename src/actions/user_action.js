@@ -1,6 +1,5 @@
 import { navigate } from '@reach/router';
 import axios from 'axios';
-// import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import API_BASE from './api_url';
 
@@ -54,7 +53,7 @@ export const loginUser = (user) => {
         }
       })
       .catch((data) => {
-        dispatch({ type: LOGIN_BACKEND_ERROR, payload: data });
+        dispatch({ type: LOGIN_BACKEND_ERROR, payload: data.response });
       });
   };
 };
