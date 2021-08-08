@@ -152,3 +152,25 @@ body {
 .carousel-indicators > li  {
   background-color: #EC5200;
 }
+
+@media screen and (max-width: 768px) {
+  .main {
+    height: 60vh
+  }
+  .second_image {
+    margin-top: 3rem;
+    width: 100%;
+  }
+
+  .third_section_wrapper {
+    width: 100%;
+  }
+
+  .third_image {
+    width: 100%;
+  }
+  .more-details {
+    display: flex;
+    flex-direction: column;
+  }
+}

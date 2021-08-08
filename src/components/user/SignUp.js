@@ -35,7 +35,7 @@ const SignUp = ({ errors, backend }) => {
   console.log(backend);
   return (
 
-    <div className="d-flex flex-column signup-form w-50 mx-auto">
+    <div className="d-flex flex-column signup-form mx-5">
       <div>
         <i className="fas fa-heartbeat" />
         <span className="font-weight-bold">KEEP IT FIT</span>

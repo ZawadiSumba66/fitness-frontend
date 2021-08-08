@@ -55,7 +55,7 @@ const TipDetail = ({ tip, id }) => {
               <p>{tip.description}</p>
             </div>
 
-            <div className="my-2 d-flex justify-content-between">
+            <div className="my-2 d-flex justify-content-between more-details">
               <div className="mr-5">
                 <div className="d-flex align-items-center">
                   <div className="px-2">

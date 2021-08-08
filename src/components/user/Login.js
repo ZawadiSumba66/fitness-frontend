@@ -23,7 +23,7 @@ const Login = ({ errors }) => {
 
   return (
 
-    <div className="d-flex flex-column signup-form w-50 mx-auto">
+    <div className="d-flex flex-column signup-form justify-content-center mx-5">
       <div>
         <i className="fas fa-heartbeat" />
         <span className="font-weight-bold">KEEP IT FIT</span>

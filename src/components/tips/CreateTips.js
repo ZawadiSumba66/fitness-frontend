@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import store from '../../store';
 import { createTip } from '../../actions/tip_action';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
 
-const CreateTips = () => {
+const CreateTips = ({ error }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [benefits, setBenefits] = useState('');
@@ -19,14 +19,17 @@ const CreateTips = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tip = {
-      title,
-      description,
-      benefits,
-      instructions,
-      image,
-    };
-    store.dispatch(createTip(tip));
+    if (!error) {
+      const tip = {
+        title,
+        description,
+        benefits,
+        instructions,
+        image,
+      };
+      store.dispatch(createTip(tip));
+    }
+    window.flash(error, 'warning');
   };
 
   return (
@@ -39,8 +42,8 @@ const CreateTips = () => {
       </div>
       <div className="create-tips">
         <form onSubmit={handleSubmit}>
-          <div className="row mx-auto w-50 bg-white p-5">
-            <h3>Create Fitness Tips</h3>
+          <div className="row bg-white p-5">
+            <h3>Create a Fitness Tip</h3>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -94,16 +97,12 @@ const CreateTips = () => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  createtip: () => dispatch(createTip),
-});
-
 const mapStateToProps = (state) => ({
   error: state.tipsReducer.error,
 });
 
-// CreateTips.propTypes = {
-//   createtip: PropTypes.func.isRequired,
-//   // error: PropTypes.string.isRequired,
-// };
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTips);
+CreateTips.propTypes = {
+  error: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps, null)(CreateTips);

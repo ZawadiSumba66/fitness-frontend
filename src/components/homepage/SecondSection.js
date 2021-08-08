@@ -2,7 +2,7 @@ import { Link } from '@reach/router';
 import second from '../../assets/second.jpg';
 
 const SecondSection = () => (
-  <div className=" pt-5 mx-5">
+  <div className=" pt-5 mx-lg-5">
     <h5 className="text-sm-gray text-center my-2 text-orange font-weight-bold text-uppercase">
       Reliable and well-sourced health practises
     </h5>
@@ -11,7 +11,7 @@ const SecondSection = () => (
     </h6>
     <div className="row align-items-center">
       <div className="col-md-6">
-        <div>
+        <div className="pl-3">
           <h2 className="text-lg-black font-weight-bold">
             Change your life today for a better tomorrow
           </h2>

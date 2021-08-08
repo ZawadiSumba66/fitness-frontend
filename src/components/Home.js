@@ -6,9 +6,9 @@ import Footer from './homepage/Footer';
 
 const Home = () => (
   <div>
-    <div className="main px-5">
+    <div className="main">
       <Header />
-      <div className="main__wrapper-box pt-5 mt-5">
+      <div className="main__wrapper-box pt-lg-5 px-3 mt-5">
         <h1 className="text-font-lg text-white font-weight-bold">
           Best Gym
         </h1>
