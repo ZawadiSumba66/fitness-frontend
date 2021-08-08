@@ -3,8 +3,8 @@
 # FITNESS APP(REACT FRONTEND)
 This is a fitness tips application where users can get to see curated gym practises exercises. They can also be able to create a tip they know would be beneficial to others. A user can also add a list of his/her favorite tips in the dashboard page
 
-See the live link [here](https://fitness-tips.herokuapp.com/) 
-You can check the Rails Repo [here](https://github.com/ZawadiSumba66/rails-backend/tree/development)
+- See the live link [here](https://fitness-tips.herokuapp.com/) 
+- You can check the Rails Repo [here](https://github.com/ZawadiSumba66/rails-backend/tree/development)
 
 ## Built With
 - Node.js
@@ -18,6 +18,7 @@ You can check the Rails Repo [here](https://github.com/ZawadiSumba66/rails-backe
 - ES6
 - Jest
 - Axios
+- Rails API
 
 ## Getting Started
 
