@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { Link } from '@reach/router';
-// import PropTypes from 'prop-types';
+// import { Alert } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
+import Flash from './Flash';
 
-const SignUp = () => {
+const SignUp = ({ errors, backend }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,16 +20,19 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      username,
-      email,
-      password,
-      password_confirmation: passwordConfirmation,
-      image,
-    };
-    store.dispatch(signupUser(user));
+    if (!errors) {
+      const user = {
+        username,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+        image,
+      };
+      store.dispatch(signupUser(user));
+    }
+    window.flash(errors, 'warning');
   };
-
+  console.log(backend);
   return (
 
     <div className="d-flex flex-column signup-form w-50 mx-auto">
@@ -36,6 +41,20 @@ const SignUp = () => {
         <span className="font-weight-bold">KEEP IT FIT</span>
       </div>
       <p> Hi there! Sign up and start looking for fitness healthy tips that you can practise</p>
+      <Flash />
+      <div className="errors w-100">
+        {/* {backend.length > 0 ? (
+          <div>
+            <Alert key="6" variant="danger">
+              {backend.data.message.map((item) => (
+                <li key={Date.now() * Math.random()}>{item}</li>
+              ))}
+            </Alert>
+          </div>
+        ) : (
+          ''
+        )} */}
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           value={username}
@@ -93,17 +112,14 @@ const SignUp = () => {
   );
 };
 
-// const mapDispatchToProps = (dispatch) => ({
-//   signup: () => dispatch(signupUser),
-// });
-
 const mapStateToProps = (state) => ({
-  error: state.userReducer.signup_error,
+  errors: state.userReducer.signup_error,
+  backend: state.userReducer.signup_backend_error,
 });
 
 SignUp.propTypes = {
-  // signup: PropTypes.func.isRequired,
-  // error: PropTypes.string.isRequired,
+  backend: PropTypes.instanceOf(Array).isRequired,
+  errors: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(SignUp);

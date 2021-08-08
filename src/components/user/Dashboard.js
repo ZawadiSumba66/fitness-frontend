@@ -17,7 +17,7 @@ const Dashboard = ({ user }) => {
     createfavorite('unfavourite', id)
       .then((response) => {
         if (response.ok) {
-          window.flash('Tip successfuly added to favorites!');
+          window.flash('Tip successfully removed from favorites!');
         }
         return response;
       })

@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './store';
+import Bus from './actions/bus';
+
+window.flash = (message, type = 'success') => Bus.emit('flash', ({ message, type }));
 
 ReactDOM.render(
   <React.StrictMode>

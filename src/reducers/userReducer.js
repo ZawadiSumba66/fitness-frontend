@@ -6,10 +6,12 @@ import {
 const initialState = {
   login_error: '',
   signup_error: '',
+  signup_backend_error: [],
   user: [],
   getuser_error: '',
   loginuser: [],
   signupuser: [],
+  login_backend_error: [],
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -31,7 +33,7 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGIN_BACKEND_ERROR:
       return {
-        login_error: action.payload,
+        login_backend_error: action.payload,
       };
     case SIGNUP_ERROR:
       return {
@@ -39,7 +41,7 @@ const userReducer = (state = initialState, action) => {
       };
     case SIGNUP_BACKEND_ERROR:
       return {
-        signup_error: action.payload,
+        signup_backend_error: action.payload.errors,
       };
     default:
       return state;

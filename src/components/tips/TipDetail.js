@@ -25,12 +25,15 @@ const TipDetail = ({ tip, id }) => {
   const handleSubmit = () => {
     createfavorite('favorite', id)
       .then((response) => {
-        if (response.ok) {
-          window.flash('House successfuly added to favourites!');
+        if (response.status === 200) {
+          window.flash('Tip successfuly added to favourites!');
         }
         return response;
       })
-      .catch((error) => error);
+      .catch((error) => {
+        window.flash('Tip was already added to favourites!', 'danger');
+        return error;
+      });
   };
 
   return (

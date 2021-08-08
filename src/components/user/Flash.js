@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import EventEmitter from 'events';
+import { useState, useEffect } from 'react';
+import Bus from '../../actions/bus';
 
 const Flash = () => {
   const [visibility, setVisibility] = useState(false);
   const [message, setMessage] = useState('');
   const [type, setType] = useState('');
-  const emit = new EventEmitter();
+
   useEffect(() => {
-    emit.addListener('flash', ({ message, type }) => {
+    Bus.addListener('flash', ({ message, type }) => {
       setVisibility(true);
       setMessage(message);
       setType(type);

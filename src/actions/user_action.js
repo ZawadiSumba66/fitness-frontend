@@ -80,7 +80,7 @@ export const signupUser = (user) => {
         }
         return response;
       }).catch((error) => {
-        dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error });
+        dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error.response });
       });
   };
 };

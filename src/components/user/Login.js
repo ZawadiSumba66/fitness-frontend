@@ -1,20 +1,24 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { loginUser } from '../../actions/user_action';
 import store from '../../store';
+import Flash from './Flash';
 
-const Login = () => {
+const Login = ({ errors }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      email,
-      password,
-    };
-    store.dispatch(loginUser(user));
+    if (!errors) {
+      const user = {
+        email,
+        password,
+      };
+      store.dispatch(loginUser(user));
+    }
+    window.flash(errors, 'warning');
   };
 
   return (
@@ -25,6 +29,7 @@ const Login = () => {
         <span className="font-weight-bold">KEEP IT FIT</span>
       </div>
       <p> Welcome Back! Lets continue with our journey of keeping fit</p>
+      <Flash />
       <form onSubmit={handleSubmit}>
         <input
           value={email}
@@ -63,12 +68,8 @@ const mapStateToProps = (state) => ({
   errors: state.userReducer.login_error,
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//   login: () => dispatch(loginUser()),
-// });
-
-// Login.propTypes = {
-//   errors: PropTypes.string.isRequired,
-// };
+Login.propTypes = {
+  errors: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(Login);
