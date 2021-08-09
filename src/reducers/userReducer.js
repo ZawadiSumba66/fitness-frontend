@@ -11,7 +11,7 @@ const initialState = {
   getuser_error: '',
   loginuser: [],
   signupuser: [],
-  login_backend_error: [],
+  login_backend_error: '',
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,7 +33,7 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGIN_BACKEND_ERROR:
       return {
-        login_backend_error: action.payload.data,
+        login_backend_error: action.payload.errors,
       };
     case SIGNUP_ERROR:
       return {

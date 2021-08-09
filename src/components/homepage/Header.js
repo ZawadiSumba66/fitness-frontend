@@ -17,7 +17,7 @@ const Header = () => (
     <div className="">
       <Link
         to="/login"
-        className="px-4 text-decoration-none font-weight-bolder text-uppercase text-dark text-sm-light"
+        className="px-4 text-decoration-none font-weight-bolder text-uppercase text-dark"
       >
         Sign in
       </Link>

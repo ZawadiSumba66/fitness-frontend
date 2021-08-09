@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Spinner } from 'react-bootstrap';
 import { connect, useDispatch } from 'react-redux';
 import SideBar from './SideBar';
 import { fetchUser } from '../../actions/user_action';
@@ -11,7 +12,13 @@ const DashboardLeft = ({ user }) => {
   }, []);
 
   if (!user) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
   return (
     <div>

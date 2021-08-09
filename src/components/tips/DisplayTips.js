@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Spinner } from 'react-bootstrap';
 import { fetchTips } from '../../actions/tip_action';
 import DisplayTip from './DisplayTip';
 import DashboardLeft from '../user/DashboardLeft';
@@ -13,7 +13,13 @@ const DisplayTips = ({ tips }) => {
     dispatch(fetchTips());
   }, []);
   if (!tips) {
-    return <h1>loading</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
   return (
     <div>

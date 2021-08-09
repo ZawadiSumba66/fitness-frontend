@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
-// import { Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
 import { fetchTip } from '../../actions/tip_action';
@@ -15,7 +15,13 @@ const TipDetail = ({ tip, id }) => {
   }, []);
 
   if (!tip) {
-    return <h1>loading</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   if (!localStorage.getItem('token')) {

@@ -1,4 +1,4 @@
-import '../App.css';
+import '../styles/App.css';
 import { Router } from '@reach/router';
 import SignUp from './user/SignUp';
 import Login from './user/Login';

@@ -43,7 +43,7 @@ export const fetchTips = () => (dispatch) => {
 
 export const createTip = (tip) => {
   if ((!tip.title) || (!tip.description)
-   || (!tip.instructions) || (!tip.benefits) || (!tip.image)) {
+   || (!tip.instructions) || (!tip.benefits)) {
     return (dispatch) => {
       dispatch({ type: CREATE_ERROR, payload: 'Please enter all fields.' });
     };
@@ -64,7 +64,7 @@ export const createTip = (tip) => {
         }
       })
       .catch((data) => {
-        dispatch({ type: CREATE_TIP_ERROR, payload: data });
+        dispatch({ type: CREATE_TIP_ERROR, payload: data.response });
       });
   };
 };

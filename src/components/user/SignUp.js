@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { Link } from '@reach/router';
-import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
@@ -12,11 +11,6 @@ const SignUp = ({ backend }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [image, setImage] = useState(null);
-
-  const handleFileUpload = (e) => {
-    setImage(e.target.files[0]);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,11 +19,10 @@ const SignUp = ({ backend }) => {
       email,
       password,
       password_confirmation: passwordConfirmation,
-      image,
     };
     store.dispatch(signupUser(user));
   };
-  console.log(backend);
+
   return (
 
     <div className="d-flex flex-column signup-form mx-5">
@@ -39,15 +32,12 @@ const SignUp = ({ backend }) => {
       </div>
       <p> Hi there! Sign up and start looking for fitness healthy tips that you can practise</p>
       <Flash />
-      <br />
       <div className="errors">
         {backend ? (
           <div>
-            <Alert key="6" variant="danger">
-              {backend.map((item) => (
-                <li className="text-dark font-weight-bold" key={Date.now() * Math.random()}>{item}</li>
-              ))}
-            </Alert>
+            {backend.map((item) => (
+              <li className="text-danger" key={Date.now() * Math.random()}>{item}</li>
+            ))}
           </div>
         ) : (
           ''
@@ -85,12 +75,6 @@ const SignUp = ({ backend }) => {
           name="password_confirmation"
           placeholder="Confirm your password"
           className="form-control mt-3"
-        />
-        <input
-          onChange={handleFileUpload}
-          type="file"
-          name="image"
-          className="mt-3"
         />
         <br />
         <input

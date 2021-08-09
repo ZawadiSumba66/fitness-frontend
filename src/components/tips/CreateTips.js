@@ -11,11 +11,6 @@ const CreateTips = ({ error }) => {
   const [description, setDescription] = useState('');
   const [benefits, setBenefits] = useState('');
   const [instructions, setInstructions] = useState('');
-  const [image, setImage] = useState(null);
-
-  const handleFileUpload = (files) => {
-    setImage(files[0]);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +20,6 @@ const CreateTips = ({ error }) => {
         description,
         benefits,
         instructions,
-        image,
       };
       store.dispatch(createTip(tip));
     }
@@ -77,19 +71,11 @@ const CreateTips = ({ error }) => {
               className="form-control mt-3"
               rows="3"
             />
-            <div className="d-flex flex-column pt-2">
-              <input
-                onChange={(e) => handleFileUpload(e.target.files)}
-                type="file"
-                name="image"
-              />
-              <br />
-              <input
-                type="submit"
-                className="button-orange text-light btn font-weight-bold"
-                value="Submit"
-              />
-            </div>
+            <input
+              type="submit"
+              className="button-orange mt-3 w-50 text-light btn font-weight-bold"
+              value="Submit"
+            />
           </div>
         </form>
       </div>

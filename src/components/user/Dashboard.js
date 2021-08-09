@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Spinner } from 'react-bootstrap';
 import FavoriteTip from '../tips/FavoriteTip';
 import DashboardLeft from './DashboardLeft';
 import Flash from './Flash';
@@ -16,7 +17,7 @@ const Dashboard = ({ user }) => {
   const handleRemove = (id) => {
     createfavorite('unfavourite', id)
       .then((response) => {
-        if (response.ok) {
+        if (response.status === 200) {
           window.flash('Tip successfully removed from favorites!');
         }
         return response;
@@ -25,7 +26,13 @@ const Dashboard = ({ user }) => {
   };
 
   if (!user) {
-    return <h1>loading</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   return (

@@ -3,13 +3,14 @@ body {
 }
 
 .main {
-  background-image: url('./assets/main-bg.jpg');
+  background-image: url('../assets/main-bg.jpg');
   background-size: cover;
   height: 95vh;
+  width: 100%;
 }
 
 .button-orange {
-  background-color: #EC5200;
+  background-color: #ec5200;
   border-radius: 20px;
 }
 
@@ -23,32 +24,32 @@ body {
 
 .second_image {
   width: 600px;
-  height: 400px
+  height: 400px;
 }
 
 .third_image {
   width: 500px;
-  height: 300px
+  height: 300px;
 }
 
 .third_section_wrapper {
-  background-color: #E7F0FF;
+  background-color: #e7f0ff;
   padding: 0 40px;
 }
 
 .fab {
   padding-left: 10px;
   font-size: 25px;
-  color: #27569C;
+  color: #27569c;
 }
 
 .fa-twitter {
-  color: #00AFF1;
+  color: #00aff1;
 }
 
 .fas {
   font-size: 30px;
-  color: #EC5200;
+  color: #ec5200;
 }
 
 .font-footer {
@@ -60,7 +61,7 @@ body {
 }
 
 .text-orange {
-  color: #EC5200;
+  color: #ec5200;
 }
 
 .horizontal {
@@ -78,21 +79,25 @@ body {
   display: flex;
   align-items: center;
   z-index: 1111;
-  }
-  .alert p {
+}
+
+.alert p {
   margin: 0;
-  }
-  .alert-error {
+}
+
+.alert-error {
   background: lightcoral;
-  }
-  .alert-success {
+}
+
+.alert-success {
   background: lightgreen;
-  }
-  .close {
+}
+
+.close {
   color: white;
   cursor: pointer;
   margin-right: 10px;
-  }
+}
 
 .alert__wrapper {
   max-width: 900px;
@@ -137,35 +142,48 @@ body {
 }
 
 .create-tips {
-  background-color: #F6FAFB;
-  height: 100vh
+  background-color: #f6fafb;
+  height: 100vh;
 }
 
 .infoCarousel__wrapper-desc-info {
   max-width: 600px;
   height: 50vh;
 }
+
 .infoCarousel__wrapper-detail {
   max-width: 900px;
-} 
+}
 
-.carousel-indicators > li  {
-  background-color: #EC5200;
+li {
+  list-style: none;
+}
+
+.carousel-indicators > li {
+  background-color: #ec5200;
+}
+
+.spinner__wrapper {
+  height: 100vh;
+  color: #ec5200;
 }
 
 @media screen and (max-width: 1024px) {
-.third_image {
-  width: 100%;
-}
+  .third_image {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .main {
-    height: 75vh
+    height: 70vh;
+    width: 100%;
   }
+
   .second_image {
     margin-top: 3rem;
     width: 100%;
+    height: 300px;
   }
 
   .third_section_wrapper {
@@ -174,7 +192,9 @@ body {
 
   .third_image {
     width: 100%;
+    height: 200px;
   }
+
   .more-details {
     display: flex;
     flex-direction: column;

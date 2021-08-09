@@ -5,9 +5,6 @@ import { Link } from '@reach/router';
 const SideBar = ({ username, image }) => {
   const logOut = () => localStorage.clear();
 
-  if (!username) {
-    return <h1>Loading...</h1>;
-  }
   return (
     <Menu className="d-flex flex-column bg-white justify-content-between">
       <div className="pb-5 pt-2 pl-2">

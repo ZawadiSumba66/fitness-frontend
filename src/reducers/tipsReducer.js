@@ -7,6 +7,7 @@ const initialState = {
   error: '',
   tip: [],
   create_tips: [],
+  tip_error: [],
 };
 
 const tipsReducer = (state = initialState, action) => {
@@ -25,7 +26,7 @@ const tipsReducer = (state = initialState, action) => {
       };
     case CREATE_TIP_ERROR:
       return {
-        error: action.payload,
+        tip_error: action.payload.data.message,
       };
     case CREATE_ERROR:
       return {

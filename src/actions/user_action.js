@@ -60,7 +60,7 @@ export const loginUser = (user) => {
 
 export const signupUser = (user) => {
   if ((!user.username) || (!user.email)
-  || (!user.password_confirmation) || (!user.password) || (!user.image)) {
+  || (!user.password_confirmation) || (!user.password)) {
     return (dispatch) => {
       dispatch({ type: SIGNUP_ERROR, payload: 'Please enter all fields.' });
     };
