@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the create Tips snapshot 1`] = `
+<div>
+  <div
+    className="d-flex justify-content-center align-items-center spinner__wrapper"
+  >
+    <div
+      className="spinner-border text-primary"
+      role="status"
+    >
+      <span
+        className="sr-only"
+      >
+        Loading...
+      </span>
+    </div>
+  </div>
+  <div
+    className="user__info p-3"
+  >
+    <div
+      className="rounded p-3 mt-4"
+    >
+      <div />
+    </div>
+  </div>
+  <div
+    className="create-tips"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="row bg-white p-5"
+      >
+        <h3>
+          Create a Fitness Tip
+        </h3>
+        <input
+          className="form-control"
+          name="title"
+          onChange={[Function]}
+          placeholder="Enter the Title"
+          rows="3"
+          type="text"
+          value=""
+        />
+        <textarea
+          className="form-control mt-3"
+          name="description"
+          onChange={[Function]}
+          placeholder="Enter a brief description"
+          rows="3"
+          value=""
+        />
+        <textarea
+          className="form-control mt-3"
+          name="instructions"
+          onChange={[Function]}
+          placeholder="Add some instructions to follow"
+          rows="3"
+          value=""
+        />
+        <textarea
+          className="form-control mt-3"
+          name="benefits"
+          onChange={[Function]}
+          placeholder="What are some of the benefits a user will gain"
+          rows="3"
+          value=""
+        />
+        <input
+          className="button-orange mt-3 w-50 text-light btn font-weight-bold"
+          type="submit"
+          value="Submit"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+`;

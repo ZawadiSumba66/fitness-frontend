@@ -1,0 +1,202 @@
+body {
+  overflow-x: hidden;
+}
+
+.main {
+  background-image: url('../assets/main-bg.jpg');
+  background-size: cover;
+  height: 95vh;
+  width: 100%;
+}
+
+.button-orange {
+  background-color: #ec5200;
+  border-radius: 20px;
+}
+
+.button-nav {
+  border-radius: 20px;
+}
+
+.user-name {
+  cursor: pointer;
+}
+
+.second_image {
+  width: 600px;
+  height: 400px;
+}
+
+.third_image {
+  width: 500px;
+  height: 300px;
+}
+
+.third_section_wrapper {
+  background-color: #e7f0ff;
+  padding: 0 40px;
+}
+
+.fab {
+  padding-left: 10px;
+  font-size: 25px;
+  color: #27569c;
+}
+
+.fa-twitter {
+  color: #00aff1;
+}
+
+.fas {
+  font-size: 30px;
+  color: #ec5200;
+}
+
+.font-footer {
+  font-size: 10px;
+}
+
+.signup-form {
+  padding-top: 50px;
+}
+
+.text-orange {
+  color: #ec5200;
+}
+
+.horizontal {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.alert {
+  color: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1111;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert-error {
+  background: lightcoral;
+}
+
+.alert-success {
+  background: lightgreen;
+}
+
+.close {
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.alert__wrapper {
+  max-width: 900px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+  color: black;
+}
+
+.alert__wrapper-auth {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 20px;
+  top: 26px;
+}
+
+.sidebar-wrapper {
+  position: relative;
+}
+
+.bm-burger-bars {
+  background: #000;
+  border: none;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.text-box {
+  height: 100px;
+}
+
+.create-tips {
+  background-color: #f6fafb;
+  height: 100vh;
+}
+
+.infoCarousel__wrapper-desc-info {
+  max-width: 600px;
+  height: 50vh;
+}
+
+.infoCarousel__wrapper-detail {
+  max-width: 900px;
+}
+
+li {
+  list-style: none;
+}
+
+.carousel-indicators > li {
+  background-color: #ec5200;
+}
+
+.spinner__wrapper {
+  height: 100vh;
+  color: #ec5200;
+}
+
+@media screen and (max-width: 1024px) {
+  .third_image {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    height: 75vh;
+    width: 100%;
+  }
+
+  .second_image {
+    margin-top: 3rem;
+    width: 100%;
+    height: 300px;
+  }
+
+  .third_section_wrapper {
+    width: 100%;
+  }
+
+  .third_image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .more-details {
+    display: flex;
+    flex-direction: column;
+  }
+}
