@@ -2,7 +2,7 @@ import { slide as Menu } from 'react-burger-menu';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 
-const SideBar = ({ username, image }) => {
+const SideBar = ({ username }) => {
   const logOut = () => localStorage.clear();
 
   return (
@@ -13,11 +13,6 @@ const SideBar = ({ username, image }) => {
       </div>
       <div className="d-flex flex-column mb-5 text-center">
         <div>
-          <img
-            src={image}
-            alt=""
-            className="d-block mx-auto card-rounded-image"
-          />
           <h5 className="my-2 text-center user-name menu-item text-orange">
             @
             {username}
@@ -57,7 +52,6 @@ const SideBar = ({ username, image }) => {
 
 SideBar.propTypes = {
   username: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
 };
 
 export default SideBar;

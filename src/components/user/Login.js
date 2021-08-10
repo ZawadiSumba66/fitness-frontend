@@ -75,7 +75,7 @@ const mapStateToProps = (state) => ({
 });
 
 Login.propTypes = {
-  errors: PropTypes.instanceOf(Array).isRequired,
+  errors: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(Login);

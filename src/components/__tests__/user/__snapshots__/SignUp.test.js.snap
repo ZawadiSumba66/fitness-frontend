@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the signup page snapshot 1`] = `
+<div
+  className="d-flex flex-column signup-form mx-5"
+>
+  <div>
+    <i
+      className="fas fa-heartbeat"
+    />
+    <span
+      className="font-weight-bold"
+    >
+      KEEP IT FIT
+    </span>
+  </div>
+  <p>
+     Hi there! Sign up and start looking for fitness healthy tips that you can practise
+  </p>
+  <div />
+  <div
+    className="errors"
+  >
+    <div />
+  </div>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="form-control"
+      name="username"
+      onChange={[Function]}
+      placeholder="Enter your username"
+      type="text"
+      value=""
+    />
+    <input
+      className="form-control mt-3"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter your email"
+      type="email"
+      value=""
+    />
+    <input
+      className="form-control mt-3"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value=""
+    />
+    <input
+      className="form-control mt-3"
+      name="password_confirmation"
+      onChange={[Function]}
+      placeholder="Confirm your password"
+      type="password"
+      value=""
+    />
+    <br />
+    <input
+      className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
+      type="submit"
+      value="Sign up"
+    />
+  </form>
+  <p
+    className="pt-5 text-center"
+  >
+    Have an account?
+  </p>
+  <a
+    className="text-center"
+    href="/login"
+    onClick={[Function]}
+  >
+    Login
+  </a>
+</div>
+`;

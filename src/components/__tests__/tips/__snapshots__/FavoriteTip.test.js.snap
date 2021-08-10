@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the favorite tips snapshot 1`] = `
+<div
+  className="col-md-4 my-2"
+>
+  <div
+    className="shadow rounded favourites__card mx-auto pl-3"
+  >
+    <div
+      className="position-relative"
+    >
+      <h3
+        className="text-center font-weight-bold test-name"
+      />
+      <p />
+      <button
+        className="button-orange font-weight-bold text-light btn"
+        type="button"
+      >
+        Remove
+      </button>
+    </div>
+    <div
+      className="d-flex justify-content-between align-items-center p-3"
+    >
+      <div>
+        <span
+          className="fa fa-star checked"
+        />
+        <span
+          className="fa fa-star checked"
+        />
+        <span
+          className="fa fa-star checked"
+        />
+        <span
+          className="fa fa-star checked"
+        />
+        <span
+          className="fa fa-star text-sm-gray"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the Display Tip snapshot 1`] = `
+<div
+  className="shadow rounded infoCarousel__wrapper-desc-info mx-auto mb-5"
+>
+  <h3
+    className="text-center font-weight-bold test-class"
+  />
+  <div
+    className="bg-white align-items-center p-3"
+  >
+    <p />
+  </div>
+  <a
+    className="button-orange p-2 ml-3 text-light font-weight-bold"
+    href="/tips/undefined"
+    onClick={[Function]}
+  >
+    View more details
+  </a>
+  <div
+    className="pt-4 px-3"
+  >
+    <span
+      className="fa fa-star checked"
+    />
+    <span
+      className="fa fa-star checked"
+    />
+    <span
+      className="fa fa-star checked"
+    />
+    <span
+      className="fa fa-star checked"
+    />
+    <span
+      className="fa fa-star text-sm-gray"
+    />
+  </div>
+</div>
+`;

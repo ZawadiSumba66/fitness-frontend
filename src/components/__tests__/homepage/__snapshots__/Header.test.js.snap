@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the header snapshot 1`] = `
+<nav
+  className="d-flex justify-content-between py-3 align-items-center navbar navbar-expand navbar-light"
+>
+  <div>
+    <a
+      aria-current="page"
+      className="text-lg text-decoration-none font-weight-bolder text-light"
+      href="/"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-heartbeat"
+      />
+      <span>
+        KEEP IT FIT
+      </span>
+    </a>
+  </div>
+  <div
+    className=""
+  >
+    <a
+      className="px-4 text-decoration-none font-weight-bolder text-uppercase text-dark"
+      href="/login"
+      onClick={[Function]}
+    >
+      Sign in
+    </a>
+    <a
+      className="header-btn font-weight-bolder text-uppercase text-light py-2 px-3 button-nav btn-dark"
+      href="/signup"
+      onClick={[Function]}
+    >
+      Sign up
+    </a>
+  </div>
+</nav>
+`;
