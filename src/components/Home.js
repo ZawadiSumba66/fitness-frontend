@@ -9,10 +9,10 @@ const Home = () => (
     <div className="main">
       <Header />
       <div className="main__wrapper-box pt-lg-5 px-3 mt-5">
-        <h1 className="text-xl md:text-5xl text-white font-weight-bold">
+        <h1 className="text-2xl md:text-5xl text-white font-weight-bold">
           Best Gym
         </h1>
-        <h1 className="text-xl md:text-5xl text-white font-weight-bold">
+        <h1 className="text-2xl md:text-5xl text-white font-weight-bold">
           Workout tips
         </h1>
 
