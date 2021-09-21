@@ -64,7 +64,7 @@ const Login = ({ errors }) => {
       <p className="pt-5 text-center text-white">Don`t have an account?</p>
       <Link
         to="/signup"
-        className="text-center text-white"
+        className="text-center text-dark font-bold"
       >
         SignUp
       </Link>

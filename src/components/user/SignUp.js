@@ -102,7 +102,7 @@ const SignUp = ({ backend }) => {
       <p className="pt-5 text-center text-white">Have an account?</p>
       <Link
         to="/login"
-        className="text-center text-white"
+        className="text-center text-dark font-bold"
       >
         Login
       </Link>
