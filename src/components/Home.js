@@ -9,14 +9,14 @@ const Home = () => (
     <div className="main">
       <Header />
       <div className="main__wrapper-box pt-lg-5 px-3 mt-5">
-        <h1 className="text-font-lg text-white font-weight-bold">
+        <h1 className="text-xl md:text-5xl text-white font-weight-bold">
           Best Gym
         </h1>
-        <h1 className="text-font-lg text-white font-weight-bold">
-          Practises tips
+        <h1 className="text-xl md:text-5xl text-white font-weight-bold">
+          Workout tips
         </h1>
 
-        <p className="text-sm mt-3 text-white">
+        <p className="text-sm md:text-base mt-3 text-white">
           Get to view the best fitness tips offered by our team from fitness.io for free.
           <br />
           You can also create tips that you want and think can be beneficial to others.

@@ -20,12 +20,12 @@ const Login = ({ errors }) => {
 
   return (
 
-    <div className="d-flex flex-column signup-form justify-content-center mx-5">
+    <div className="d-flex flex-column signup-form justify-content-center px-10 md:px-60 fitness-image">
       <div>
         <i className="fas fa-heartbeat" />
-        <span className="font-weight-bold">KEEP IT FIT</span>
+        <span className="font-bold">KEEP IT FIT</span>
       </div>
-      <p> Welcome Back! Lets continue with our journey of keeping fit</p>
+      <p className="text-white font-bold"> Welcome Back! Lets continue with our journey of keeping fit</p>
       <Flash />
       <div className="errors">
         {errors ? (
@@ -53,16 +53,18 @@ const Login = ({ errors }) => {
           placeholder="Password"
           className="form-control mt-3"
         />
-        <input
+        <button
           type="submit"
-          value="Log in"
           className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
-        />
+          value="Sign up"
+        >
+          login
+        </button>
       </form>
-      <p className="pt-5 text-center">Don`t have an account?</p>
+      <p className="pt-5 text-center text-white">Don`t have an account?</p>
       <Link
         to="/signup"
-        className="text-center"
+        className="text-center text-white"
       >
         SignUp
       </Link>
