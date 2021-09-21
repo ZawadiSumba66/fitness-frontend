@@ -44,7 +44,7 @@ const CreateTips = ({ error }) => {
       <div className="create-tips">
         <form onSubmit={handleSubmit}>
           <div className="row bg-white p-5">
-            <h3>Create a Fitness Tip</h3>
+            <h3 className="pb-3 font-bold md:text-2xl text-xl text-orange">Create a Workout Tip</h3>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
