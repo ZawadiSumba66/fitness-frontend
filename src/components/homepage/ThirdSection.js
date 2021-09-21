@@ -13,7 +13,7 @@ const ThirdSection = () => (
       </div>
       <div className="col-md-6">
         <div>
-          <h2 className="text-lg-black font-weight-bold">
+          <h2 className="text-2xl md:text-3xl font-bold">
             We are here to guide you in every step.
           </h2>
           <p className="text-sm-gray mb-5 mt-3">

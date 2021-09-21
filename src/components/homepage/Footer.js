@@ -3,9 +3,9 @@ const Footer = () => (
     <div className="text-center mb-3">
       <div classNmae="logo">
         <i className="fas fa-heartbeat" />
-        <span className="font-weight-bold">KEEP IT FIT</span>
+        <span className="font-bold">KEEP IT FIT</span>
       </div>
-      <p className="text-secondary font-footer">
+      <p className="text-secondary font-footer pt-4">
         Lafeyete Ave 156, Brooklyn USA
         <br />
         35 St Andrew St Cambridge, CB2 3AR Great Britain
@@ -18,7 +18,7 @@ const Footer = () => (
         <i className="fab fa-instagram-square" />
         <i className="fab fa-twitter" />
       </div>
-      <span className="font-footer">KeepFit 2021. All Rights Reserved.</span>
+      <span className="font-footer pt-5 mb-3">KeepFit 2021. All Rights Reserved.</span>
     </div>
   </div>
 );

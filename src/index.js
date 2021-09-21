@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './store';
 import Bus from './actions/bus';
+import './index.css';
 
 window.flash = (message, type = 'success') => Bus.emit('flash', ({ message, type }));
 

@@ -55,7 +55,7 @@ const TipDetail = ({ tip, id }) => {
         <div className="shadow no-gutters rounded bg-white mb-3 row infoCarousel__wrapper-desc-info-detail mx-auto">
           <div className="p-3">
             <div className="">
-              <h3 className="font-weight-bold mb-2 text-orange">
+              <h3 className="font-bold text-3xl mb-2 text-orange">
                 {tip.title}
               </h3>
               <p>{tip.description}</p>

@@ -168,6 +168,13 @@ li {
   color: #ec5200;
 }
 
+.fitness-image {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.527), rgba(232, 240, 254, 0.5)),url('../assets/it.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
 @media screen and (max-width: 1024px) {
   .third_image {
     width: 100%;

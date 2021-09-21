@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const DisplayTip = ({ title, description, id }) => (
   <div className="shadow rounded infoCarousel__wrapper-desc-info mx-auto mb-5">
-    <h3 className="text-center font-weight-bold test-class">{title}</h3>
+    <h3 className="text-center font-bold text-3xl  test-class">{title}</h3>
     <div className="bg-white align-items-center p-3">
       <p>{description}</p>
     </div>
