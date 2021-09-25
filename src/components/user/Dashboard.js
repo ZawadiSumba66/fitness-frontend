@@ -34,15 +34,14 @@ const Dashboard = ({ user }) => {
       </div>
     );
   }
-
-  return (
-    <div>
-      <DashboardLeft />
-      <div className="user__info p-3">
-        <div className="rounded p-3 mt-4">
-          <Flash />
-          <h3 className="font-bold text-2xl md:text-4xl my-2 text-orange text-center">Your Favorite Fitness Tips</h3>
-          {user.favorites.length !== 0 ? (
+  if (user.favorites) {
+    return (
+      <div>
+        <DashboardLeft />
+        <div className="user__info p-3">
+          <div className="rounded p-3 mt-4">
+            <Flash />
+            <h3 className="font-bold text-2xl md:text-4xl my-2 text-orange text-center">Your Favorite Fitness Tips</h3>
             <div className="row">
               {user.favorites.map((tip) => (
                 <FavoriteTip
@@ -53,15 +52,12 @@ const Dashboard = ({ user }) => {
                 />
               ))}
             </div>
-          ) : (
-            <h1 className=" text-3xl text-center my-2">
-              No Favourites found
-            </h1>
-          )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return '';
 };
 
 const mapStateToProps = (state) => ({
