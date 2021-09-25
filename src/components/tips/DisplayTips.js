@@ -29,9 +29,9 @@ const DisplayTips = ({ tips }) => {
           <Flash />
         </div>
       </div>
-      <div className="d-flex flex-column mb-5">
+      <div className="d-flex flex-column mt-10 mb-5">
         <div>
-          <Carousel>
+          <Carousel data-ride="carousel">
             {tips.map((tip) => (
               <Carousel.Item key={tip.id}>
                 <DisplayTip
