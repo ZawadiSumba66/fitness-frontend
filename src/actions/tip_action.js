@@ -9,6 +9,7 @@ export const CREATE_ERROR = 'CREATE_ERROR';
 export const CREATE_TIP = 'CREATE_TIP';
 export const GETTIPS_ERROR = 'GETTIPS_ERROR';
 export const GETTIP_ERROR = 'GETTIP_ERROR';
+export const DELETE_TIP = 'DELETE_TIP';
 
 export const fetchTip = (tipId) => (dispatch) => {
   axios.get(`${API_BASE}/tips/${tipId}`, {
@@ -67,4 +68,28 @@ export const createTip = (tip) => {
         dispatch({ type: CREATE_TIP_ERROR, payload: data.response });
       });
   };
+};
+
+export const deleteTip = (tipId) => (dispatch) => {
+  axios.delete(`${API_BASE}/tips/${tipId}`,
+    {
+      id: tipId,
+    },
+    {
+      headers: {
+        Authorization: `token ${localStorage.getItem('token')}`,
+      },
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({ type: DELETE_TIP, payload: response.data });
+        navigate('/dashboard');
+        window.flash('Tip successfully removed');
+      }
+      return response;
+    })
+    .catch((error) => {
+      window.flash('An error occurred while deleting this tip', 'danger');
+      return error;
+    });
 };
