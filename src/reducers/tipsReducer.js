@@ -1,5 +1,5 @@
 import {
-  GET_TIPS, GET_TIP, CREATE_TIP, CREATE_ERROR, CREATE_TIP_ERROR,
+  GET_TIPS, GET_TIP, CREATE_TIP, CREATE_ERROR, CREATE_TIP_ERROR, DELETE_TIP,
 } from '../actions/tip_action';
 
 const initialState = {
@@ -31,6 +31,11 @@ const tipsReducer = (state = initialState, action) => {
     case CREATE_ERROR:
       return {
         error: action.payload,
+      };
+    case DELETE_TIP:
+      return {
+        ...state,
+        tips: [state.tips.filter((tip) => tip.id !== action.payload)],
       };
     default:
       return state;
