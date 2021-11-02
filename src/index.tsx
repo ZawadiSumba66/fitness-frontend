@@ -6,7 +6,13 @@ import store from './store';
 import Bus from './actions/bus';
 import './index.css';
 
-window.flash = (message, type = 'success') => Bus.emit('flash', ({ message, type }));
+declare global {
+  interface Window {
+    flash?: any;
+  }
+}
+
+window.flash = (message: string, type = 'success') => Bus.emit('flash', ({ message, type }));
 
 ReactDOM.render(
   <React.StrictMode>

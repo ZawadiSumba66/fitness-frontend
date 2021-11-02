@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from '@reach/router';
-import PropTypes from 'prop-types';
 import { signupUser } from '../../actions/user_action';
 import store from '../../store';
 import Flash from './Flash';
 
-const SignUp = ({ backend }) => {
+type UserProps = {
+  backend: string[];
+};
+
+const SignUp = ({ backend }: UserProps) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +17,7 @@ const SignUp = ({ backend }) => {
   const [isLoading, setLoading] = useState(false);
   // const [image, setImage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const formData = new FormData();
     // formData.append('username', username);
@@ -27,7 +30,7 @@ const SignUp = ({ backend }) => {
       email,
       password,
       password_confirmation: passwordConfirmation,
-    };
+    } as const;
     store.dispatch(signupUser(user));
     setLoading(false);
   };
@@ -44,7 +47,7 @@ const SignUp = ({ backend }) => {
       <div className="errors">
         {backend ? (
           <div>
-            {backend.map((item) => (
+            {backend.map((item: string) => (
               <li className="text-danger" key={Date.now() * Math.random()}>{item}</li>
             ))}
           </div>
@@ -110,12 +113,14 @@ const SignUp = ({ backend }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+type SignupState = {
+  userReducer: {
+    signup_backend_error: string[]
+  }
+};
+
+const mapStateToProps = (state: SignupState) => ({
   backend: state.userReducer.signup_backend_error,
 });
-
-SignUp.propTypes = {
-  backend: PropTypes.instanceOf(Array).isRequired,
-};
 
 export default connect(mapStateToProps)(SignUp);

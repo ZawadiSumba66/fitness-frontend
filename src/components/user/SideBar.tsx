@@ -1,8 +1,12 @@
 import { slide as Menu } from 'react-burger-menu';
-import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
+import React from 'react';
 
-const SideBar = ({ username }) => {
+type UserSidebar = {
+  username: string,
+};
+
+const SideBar: React.FunctionComponent<any> = ({ username }: UserSidebar) => {
   const logOut = () => localStorage.clear();
 
   return (
@@ -48,10 +52,6 @@ const SideBar = ({ username }) => {
       </div>
     </Menu>
   );
-};
-
-SideBar.propTypes = {
-  username: PropTypes.string.isRequired,
 };
 
 export default SideBar;

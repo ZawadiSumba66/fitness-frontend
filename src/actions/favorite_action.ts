@@ -3,7 +3,7 @@ import API_BASE from './api_url';
 
 const FAVORITE = 'favorite';
 const UNFAVOURITE = 'unfavourite';
-const createfavorite = (tipstate, id) => {
+const createfavorite = (tipstate: string, id: number) => {
   let END_POINT;
   if (tipstate === 'favorite') {
     END_POINT = FAVORITE;

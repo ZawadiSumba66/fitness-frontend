@@ -1,6 +1,10 @@
-import PropTypes from 'prop-types';
+type TipFavorite = {
+  title: string,
+  description: string,
+  handleRemove: () => void;
+};
 
-const FavoriteTip = ({ title, description, handleRemove }) => (
+const FavoriteTip = ({ title, description, handleRemove }: TipFavorite) => (
   <div className="col-md-4 my-2">
     <div className="shadow rounded favourites__card mx-auto pl-3">
       <div className="position-relative">
@@ -28,11 +32,5 @@ const FavoriteTip = ({ title, description, handleRemove }) => (
     </div>
   </div>
 );
-
-FavoriteTip.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  handleRemove: PropTypes.func.isRequired,
-};
 
 export default FavoriteTip;

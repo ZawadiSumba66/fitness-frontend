@@ -4,7 +4,7 @@ import SecondSection from './homepage/SecondSection';
 import ThirdSection from './homepage/ThirdSection';
 import Footer from './homepage/Footer';
 
-const Home = () => (
+const Home: React.FunctionComponent<any> = () => (
   <div>
     <div className="main">
       <Header />

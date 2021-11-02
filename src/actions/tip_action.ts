@@ -1,6 +1,9 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
+import React from 'react';
 import { navigate } from '@reach/router';
 import API_BASE from './api_url';
+import { TipAction } from '../reducers/tipsReducer';
 
 export const GET_TIP = 'GET_TIP';
 export const GET_TIPS = 'GET_TIPS';
@@ -9,9 +12,15 @@ export const CREATE_ERROR = 'CREATE_ERROR';
 export const CREATE_TIP = 'CREATE_TIP';
 export const GETTIPS_ERROR = 'GETTIPS_ERROR';
 export const GETTIP_ERROR = 'GETTIP_ERROR';
-export const DELETE_TIP = 'DELETE_TIP';
 
-export const fetchTip = (tipId) => (dispatch) => {
+export type UserTips = {
+  title: string,
+  description: string,
+  benefits: string,
+  instructions: string
+};
+
+export const fetchTip = (tipId: number) => (dispatch: React.Dispatch<TipAction>) => {
   axios.get(`${API_BASE}/tips/${tipId}`, {
     headers: {
       Authorization: `token ${localStorage.getItem('token')}`,
@@ -24,7 +33,7 @@ export const fetchTip = (tipId) => (dispatch) => {
     });
 };
 
-export const fetchTips = () => (dispatch) => {
+export const fetchTips = () => (dispatch: React.Dispatch<TipAction>) => {
   if (localStorage.getItem('token')) {
     const token = localStorage.getItem('token');
 
@@ -42,15 +51,15 @@ export const fetchTips = () => (dispatch) => {
   }
 };
 
-export const createTip = (tip) => {
+export const createTip = (tip: UserTips) => {
   if ((!tip.title) || (!tip.description)
    || (!tip.instructions) || (!tip.benefits)) {
-    return (dispatch) => {
+    return (dispatch: React.Dispatch<TipAction>) => {
       dispatch({ type: CREATE_ERROR, payload: 'Please enter all fields.' });
     };
   }
 
-  return (dispatch) => {
+  return (dispatch: React.Dispatch<TipAction>) => {
     axios.post(`${API_BASE}/tips`,
       { tip },
       {
@@ -70,26 +79,4 @@ export const createTip = (tip) => {
   };
 };
 
-export const deleteTip = (tipId) => (dispatch) => {
-  axios.delete(`${API_BASE}/tips/${tipId}`,
-    {
-      id: tipId,
-    },
-    {
-      headers: {
-        Authorization: `token ${localStorage.getItem('token')}`,
-      },
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        dispatch({ type: DELETE_TIP, payload: response.data });
-        navigate('/dashboard');
-        window.flash('Tip successfully removed');
-      }
-      return response;
-    })
-    .catch((error) => {
-      window.flash('An error occurred while deleting this tip', 'danger');
-      return error;
-    });
-};
+/* eslint-enable import/no-cycle */

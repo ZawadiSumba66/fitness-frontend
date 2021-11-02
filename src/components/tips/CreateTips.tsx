@@ -6,14 +6,18 @@ import { createTip } from '../../actions/tip_action';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
 
-const CreateTips = ({ error }) => {
+type TipsCreate = {
+  error: string
+};
+
+const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [benefits, setBenefits] = useState('');
   const [instructions, setInstructions] = useState('');
   // const [image, setImage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!error) {
       // const formData = new FormData();
@@ -52,7 +56,7 @@ const CreateTips = ({ error }) => {
               name="title"
               placeholder="Enter the Title"
               className="form-control"
-              rows="3"
+              data-rows="3"
             />
             <textarea
               value={description}
@@ -60,7 +64,7 @@ const CreateTips = ({ error }) => {
               name="description"
               placeholder="Enter a brief description"
               className="form-control mt-3"
-              rows="3"
+              data-rows="3"
             />
             <textarea
               value={instructions}
@@ -68,7 +72,7 @@ const CreateTips = ({ error }) => {
               name="instructions"
               placeholder="Add some instructions to follow"
               className="form-control mt-3"
-              rows="3"
+              data-rows="3"
             />
             <textarea
               value={benefits}
@@ -76,7 +80,7 @@ const CreateTips = ({ error }) => {
               name="benefits"
               placeholder="What are some of the benefits a user will gain"
               className="form-control mt-3"
-              rows="3"
+              data-rows="3"
             />
             {/* <input
               type="file"
@@ -95,7 +99,12 @@ const CreateTips = ({ error }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+type TipError = {
+  tipsReducer: {
+    error: string
+  }
+};
+const mapStateToProps = (state: TipError) => ({
   error: state.tipsReducer.error,
 });
 

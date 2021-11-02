@@ -1,14 +1,18 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
-import PropTypes from 'prop-types';
 import { Spinner } from 'react-bootstrap';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
-import { fetchTip } from '../../actions/tip_action';
+import { fetchTip, UserTips } from '../../actions/tip_action';
 import createfavorite from '../../actions/favorite_action';
 
-const TipDetail = ({ tip, id }) => {
+type DetailTip = {
+  tip: UserTips,
+  id: number
+};
+
+const TipDetail: React.FunctionComponent<any> = ({ tip, id }: DetailTip) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTip(id));
@@ -23,6 +27,7 @@ const TipDetail = ({ tip, id }) => {
       </div>
     );
   }
+  console.log(id);
 
   if (!localStorage.getItem('token')) {
     navigate('/');
@@ -94,12 +99,14 @@ const TipDetail = ({ tip, id }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+type TipState = {
+  tipsReducer: {
+    tip: UserTips
+  }
+};
+
+const mapStateToProps = (state: TipState) => ({
   tip: state.tipsReducer.tip,
 });
 
-TipDetail.propTypes = {
-  tip: PropTypes.instanceOf(Array).isRequired,
-  id: PropTypes.number.isRequired,
-};
 export default connect(mapStateToProps, null)(TipDetail);

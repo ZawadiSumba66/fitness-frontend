@@ -1,20 +1,23 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Spinner } from 'react-bootstrap';
 import FavoriteTip from '../tips/FavoriteTip';
 import DashboardLeft from './DashboardLeft';
 import Flash from './Flash';
 import createfavorite from '../../actions/favorite_action';
-import { fetchUser } from '../../actions/user_action';
+import { fetchUser, UserFavorites } from '../../actions/user_action';
 
-const Dashboard = ({ user }) => {
+interface UserDashboard {
+  user: UserFavorites
+}
+
+const Dashboard: React.FunctionComponent<any> = ({ user }: UserDashboard) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
 
-  const handleRemove = (id) => {
+  const handleRemove = (id: number) => {
     createfavorite('unfavourite', id)
       .then((response) => {
         if (response.status === 200) {
@@ -43,7 +46,7 @@ const Dashboard = ({ user }) => {
             <Flash />
             <h3 className="font-bold text-2xl md:text-4xl my-2 text-orange text-center">Your Favorite Fitness Tips</h3>
             <div className="row">
-              {user.favorites.map((tip) => (
+              {user.favorites.map((tip: any) => (
                 <FavoriteTip
                   key={tip.id}
                   title={tip.title}
@@ -57,15 +60,17 @@ const Dashboard = ({ user }) => {
       </div>
     );
   }
-  return '';
+  return null;
 };
 
-const mapStateToProps = (state) => ({
+type SignupState = {
+  userReducer: {
+    user: UserFavorites
+  }
+};
+
+const mapStateToProps = (state: SignupState) => ({
   user: state.userReducer.user,
 });
-
-Dashboard.propTypes = {
-  user: PropTypes.instanceOf(Array).isRequired,
-};
 
 export default connect(mapStateToProps, null)(Dashboard);

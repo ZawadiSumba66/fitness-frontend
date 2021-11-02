@@ -1,7 +1,10 @@
+/* eslint-disable import/no-cycle */
+import React from 'react';
 import { navigate } from '@reach/router';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import API_BASE from './api_url';
+import { UserAction } from '../reducers/userReducer';
 
 export const GET_USER = 'GET_USER';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
@@ -12,11 +15,22 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const GETUSER_ERROR = 'GETUSER_ERROR';
 
-export const fetchUser = () => (dispatch) => {
+export type UserSignup = {
+  username: string,
+  email: string,
+  password: string,
+  password_confirmation: string
+};
+
+export type UserFavorites = UserSignup & { favorites: string [] };
+
+export type UserLogin = Pick<UserSignup, 'email' | 'password' >;
+
+export const fetchUser = () => (dispatch: React.Dispatch<UserAction>) => {
   const token = localStorage.getItem('token');
   let userId;
   if (token) {
-    const decoded = jwtDecode(token);
+    const decoded: any = jwtDecode(token);
     userId = decoded.sub;
   }
   axios.get(`${API_BASE}/users/${userId}`, {
@@ -32,14 +46,14 @@ export const fetchUser = () => (dispatch) => {
     });
 };
 
-export const loginUser = (user) => {
+export const loginUser = (user: UserLogin) => {
   if ((!user.email) || (!user.password)) {
-    return (dispatch) => {
+    return (dispatch: React.Dispatch<UserAction>) => {
       dispatch({ type: LOGIN_ERROR, payload: 'Please enter both Username and Password.' });
     };
   }
 
-  return (dispatch) => {
+  return (dispatch: React.Dispatch<UserAction>) => {
     axios.post(`${API_BASE}/auth`, {
       user,
     })
@@ -58,14 +72,14 @@ export const loginUser = (user) => {
   };
 };
 
-export const signupUser = (user) => {
+export const signupUser = (user: UserSignup) => {
   if ((!user.username) || (!user.email)
   || (!user.password_confirmation) || (!user.password)) {
-    return (dispatch) => {
+    return (dispatch: React.Dispatch<UserAction>) => {
       dispatch({ type: SIGNUP_ERROR, payload: 'Please enter all fields.' });
     };
   }
-  return (dispatch) => {
+  return (dispatch: React.Dispatch<UserAction>) => {
     axios.post(`${API_BASE}/users`, {
       user,
     })
@@ -83,3 +97,4 @@ export const signupUser = (user) => {
       });
   };
 };
+/* eslint-enable import/no-cycle */
