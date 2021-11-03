@@ -12,18 +12,16 @@ const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps,
 ) => props.pageComponent;
 
-const App: React.FunctionComponent<any> = () => (
-  <div>
-    <Router>
-      <RouterPage path="/" pageComponent={<Home />} />
-      <RouterPage path="/login" pageComponent={<Login />} />
-      <RouterPage path="/signup" pageComponent={<SignUp />} />
-      <RouterPage path="/dashboard" pageComponent={<Dashboard />} />
-      <RouterPage path="/create-tip" pageComponent={<CreateTips />} />
-      <RouterPage path="/tips" pageComponent={<DisplayTips />} />
-      <RouterPage path="/tips/:id" pageComponent={<TipDetail />} />
-    </Router>
-  </div>
+const App = () => (
+  <Router>
+    <RouterPage path="/" pageComponent={<Home />} />
+    <RouterPage path="/login" pageComponent={<Login />} />
+    <RouterPage path="/signup" pageComponent={<SignUp />} />
+    <RouterPage path="/dashboard" pageComponent={<Dashboard />} />
+    <RouterPage path="/create-tip" pageComponent={<CreateTips />} />
+    <RouterPage path="/tips" pageComponent={<DisplayTips />} />
+    <RouterPage path="/tips/:id" pageComponent={<TipDetail />} />
+  </Router>
 );
 
 export default App;
