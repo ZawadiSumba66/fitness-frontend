@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { navigate } from '@reach/router';
+import { navigate, useParams } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
@@ -8,11 +8,11 @@ import { fetchTip, UserTips } from '../../actions/tip_action';
 import createfavorite from '../../actions/favorite_action';
 
 type DetailTip = {
-  tip: UserTips,
-  id: number
+  tip: UserTips
 };
 
-const TipDetail: React.FunctionComponent<any> = ({ tip, id }: DetailTip) => {
+const TipDetail: React.FunctionComponent<any> = ({ tip }: DetailTip) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTip(id));
