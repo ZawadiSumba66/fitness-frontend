@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import store from '../../store';
 import { createTip } from '../../actions/tip_action';
 import DashboardLeft from '../user/DashboardLeft';
@@ -107,9 +106,5 @@ type TipError = {
 const mapStateToProps = (state: TipError) => ({
   error: state.tipsReducer.error,
 });
-
-CreateTips.propTypes = {
-  error: PropTypes.string.isRequired,
-};
 
 export default connect(mapStateToProps, null)(CreateTips);

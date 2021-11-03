@@ -49,6 +49,7 @@ const Dashboard: React.FunctionComponent<any> = ({ user }: UserDashboard) => {
               {user.favorites.map((tip: any) => (
                 <FavoriteTip
                   key={tip.id}
+                  id={tip.id}
                   title={tip.title}
                   description={tip.description}
                   handleRemove={() => handleRemove(tip.id)}

@@ -9,6 +9,11 @@ body {
   width: 100%;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
 .button-orange {
   background-color: #ec5200;
   border-radius: 20px;
