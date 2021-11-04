@@ -93,7 +93,7 @@ export const signupUser = (user: UserSignup) => {
         }
         return response;
       }).catch((error) => {
-        dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error.response });
+        dispatch({ type: SIGNUP_BACKEND_ERROR, payload: error.response.data.message });
       });
   };
 };

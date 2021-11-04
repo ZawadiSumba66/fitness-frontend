@@ -32,6 +32,7 @@ const SignUp = ({ backend }: UserProps) => {
       password_confirmation: passwordConfirmation,
     } as const;
     store.dispatch(signupUser(user));
+    console.log(backend);
     setLoading(false);
   };
 

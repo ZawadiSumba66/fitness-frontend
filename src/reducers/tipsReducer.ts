@@ -20,7 +20,7 @@ type TipState = {
   error: string,
   tip: UserTips,
   create_tips: UserTips,
-  tip_error: string,
+  tip_error: string[],
 };
 
 const initialState:TipState = {
@@ -32,7 +32,7 @@ const initialState:TipState = {
   create_tips: {
     title: '', description: '', benefits: '', instructions: '',
   },
-  tip_error: '',
+  tip_error: [],
 };
 
 const tipsReducer = (state: TipState = initialState,

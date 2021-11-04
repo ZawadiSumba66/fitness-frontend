@@ -6,7 +6,7 @@ import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
 
 type TipsCreate = {
-  error: string
+  error: string[]
 };
 
 const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
@@ -18,16 +18,14 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!error) {
-      const tip = {
-        title,
-        description,
-        benefits,
-        instructions,
-      };
-      store.dispatch(createTip(tip));
-    }
-    window.flash(error, 'warning');
+    const tip = {
+      title,
+      description,
+      benefits,
+      instructions,
+    };
+    store.dispatch(createTip(tip));
+    console.log(error);
   };
 
   return (
@@ -36,12 +34,25 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
       <div className="user__info p-3">
         <div className="rounded p-3 mt-4">
           <Flash />
+          <div className="errors">
+            {error ? (
+              <div>
+                {error.map((item: string) => (
+                  <li className="text-danger" key={Date.now() * Math.random()}>{item}</li>
+                ))}
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
       </div>
       <div className="create-tips">
         <form onSubmit={handleSubmit}>
-          <div className="row bg-white p-5">
+          <div className="bg-white p-5">
             <h3 className="pb-3 font-bold md:text-2xl text-xl text-orange">Create a Workout Tip</h3>
+            <p className="font-weight-bold">Please fill all the fields below.</p>
+            <br />
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -75,6 +86,11 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
               className="form-control mt-3"
               data-rows="3"
             />
+            {/* <input
+              type="file"
+              name="image"
+              onChange={(e) => setImage(e.target.files[0])}
+            /> */}
             <input
               type="submit"
               className="button-orange mt-3 w-50 text-light btn font-weight-bold"
@@ -89,11 +105,11 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
 
 type TipError = {
   tipsReducer: {
-    error: string
+    tip_error: string[]
   }
 };
 const mapStateToProps = (state: TipError) => ({
-  error: state.tipsReducer.error,
+  error: state.tipsReducer.tip_error,
 });
 
 export default connect(mapStateToProps, null)(CreateTips);

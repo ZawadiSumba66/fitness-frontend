@@ -73,8 +73,8 @@ export const createTip = (tip: UserTips) => {
           navigate('/tips');
         }
       })
-      .catch((data) => {
-        dispatch({ type: CREATE_TIP_ERROR, payload: data.response });
+      .catch((error) => {
+        dispatch({ type: CREATE_TIP_ERROR, payload: error.response.data.message });
       });
   };
 };
