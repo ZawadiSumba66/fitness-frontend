@@ -42,12 +42,6 @@ const initialState: UserState = {
   login_backend_error: '',
 };
 
-// export type UserState = {
-//   state: Record<string, unknown>;
-// };
-
-// const initialValue = { state: {} };
-
 const userReducer = (state: UserState = initialState,
   action: UserAction) => {
   if (action.type === GET_USER) {

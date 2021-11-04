@@ -15,12 +15,6 @@ export type TipAction = {
   payload: any
 };
 
-// type TipState = {
-//   state: Record<string, unknown>;
-// };
-
-// const initialValue = { state: {} };
-
 type TipState = {
   tips: UserTips[],
   error: string,
@@ -64,7 +58,7 @@ const tipsReducer = (state: TipState = initialState,
   if (action.type === CREATE_TIP_ERROR) {
     return {
       ...state,
-      tip_error: action.payload.data,
+      tip_error: action.payload,
     };
   }
   if (action.type === CREATE_ERROR) {

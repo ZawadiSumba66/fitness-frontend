@@ -19,12 +19,6 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!error) {
-      // const formData = new FormData();
-      // formData.append('title', title);
-      // formData.append('description', description);
-      // formData.append('benefits', benefits);
-      // formData.append('instructions', instructions);
-      // formData.append('image', image);
       const tip = {
         title,
         description,
@@ -81,11 +75,6 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
               className="form-control mt-3"
               data-rows="3"
             />
-            {/* <input
-              type="file"
-              name="image"
-              onChange={(e) => setImage(e.target.files[0])}
-            /> */}
             <input
               type="submit"
               className="button-orange mt-3 w-50 text-light btn font-weight-bold"
