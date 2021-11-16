@@ -4,9 +4,10 @@ import React from 'react';
 
 type UserSidebar = {
   username: string,
+  image: any
 };
 
-const SideBar: React.FunctionComponent<any> = ({ username }: UserSidebar) => {
+const SideBar: React.FunctionComponent<any> = ({ username, image }: UserSidebar) => {
   const logOut = () => localStorage.clear();
 
   return (
@@ -17,6 +18,11 @@ const SideBar: React.FunctionComponent<any> = ({ username }: UserSidebar) => {
       </div>
       <div className="d-flex flex-column mb-5 text-center">
         <div>
+          <img
+            src={image}
+            alt={username}
+            className="d-block mx-auto max-h-52 rounded-full"
+          />
           <h5 className="my-2 text-center user-name menu-item text-orange">
             @
             {username}

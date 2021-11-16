@@ -14,26 +14,26 @@ const SignUp = ({ backend }: UserProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [isLoading, setLoading] = useState(false);
-  // const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append('username', username);
-    // formData.append('email', email);
-    // formData.append('password', password);
-    // formData.append('password_confirmation', passwordConfirmation);
-    // formData.append('image', image);
-    const user = {
-      username,
-      email,
-      password,
-      password_confirmation: passwordConfirmation,
-    } as const;
-    store.dispatch(signupUser(user));
-    console.log(backend);
-    setLoading(false);
+    if (image !== '') {
+      const user = {
+        username,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+        image,
+      } as const;
+      store.dispatch(signupUser(user));
+    } else {
+      window.flash('Avatar shoud be selected!', 'warning');
+    }
+  };
+
+  const fileChange = (files: any) => {
+    setImage(files[0]);
   };
 
   return (
@@ -89,18 +89,22 @@ const SignUp = ({ backend }: UserProps) => {
           placeholder="Confirm your password"
           className="form-control mt-3"
         />
-        {/* <input
-          type="file"
-          name="image"
-          onChange={(e) => setImage(e.target.files[0])}
-        /> */}
+        <label htmlFor="avatar">
+          Upload Avatar
+          <input
+            type="file"
+            className="w-100 my-3"
+            onChange={(e) => fileChange(e.target.files)}
+            id="avatar"
+          />
+        </label>
         <br />
         <button
           type="submit"
           className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
           value="Sign up"
         >
-          {isLoading ? 'Loading...' : 'Sign Up'}
+          Sign Up
         </button>
       </form>
       <p className="pt-5 text-center text-white">Have an account?</p>

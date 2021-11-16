@@ -7,17 +7,11 @@ This is a fitness tips application where users can get to see curated gym practi
 - You can check the Rails Repo [here](https://github.com/ZawadiSumba66/rails-backend/tree/development)
 
 ## Built With
-- Node.js
-- React
-- React-DOM
-- React-Create-App
-- Redux
-- npm
+- React and Redux
+- Tailwind CSS
+- AWS
 - CSS
-- Boostrap
-- ES6
-- Jest
-- Axios
+- Bootstrap
 - Rails API
 
 ## Getting Started

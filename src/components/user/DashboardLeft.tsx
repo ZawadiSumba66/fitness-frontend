@@ -5,7 +5,12 @@ import SideBar from './SideBar';
 import { fetchUser, UserSignup } from '../../actions/user_action';
 
 type UserDashboardLeft = {
-  user: UserSignup
+  user: {
+    avatar_url: any
+    user: {
+      username: string,
+    }
+  }
 };
 
 const DashboardLeft: React.FunctionComponent<any> = ({ user }: UserDashboardLeft) => {
@@ -13,7 +18,7 @@ const DashboardLeft: React.FunctionComponent<any> = ({ user }: UserDashboardLeft
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
-
+  console.log(user.user.username);
   if (!user) {
     return (
       <div className="d-flex justify-content-center align-items-center spinner__wrapper">
@@ -29,7 +34,8 @@ const DashboardLeft: React.FunctionComponent<any> = ({ user }: UserDashboardLeft
         <SideBar
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
-          username={user.username}
+          username={user.user.username}
+          image={user.avatar_url}
         />
       </div>
     </div>
@@ -45,7 +51,7 @@ type UserState = {
 };
 
 const mapStateToProps = (state: UserState) => ({
-  user: state.userReducer.user.user,
+  user: state.userReducer.user,
 });
 
 export default connect(mapStateToProps, null)(DashboardLeft);
