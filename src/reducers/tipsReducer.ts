@@ -27,10 +27,10 @@ const initialState:TipState = {
   tips: [],
   error: '',
   tip: {
-    title: '', description: '', benefits: '', instructions: '',
+    title: '', description: '', benefits: '', instructions: '', image: '',
   },
   create_tips: {
-    title: '', description: '', benefits: '', instructions: '',
+    title: '', description: '', benefits: '', instructions: '', image: '',
   },
   tip_error: [],
 };
@@ -46,7 +46,7 @@ const tipsReducer = (state: TipState = initialState,
   if (action.type === GET_TIP) {
     return {
       ...state,
-      tip: action.payload.tip,
+      tip: action.payload,
     };
   }
   if (action.type === CREATE_TIP) {

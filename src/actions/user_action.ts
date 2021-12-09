@@ -15,7 +15,7 @@ export const SIGNUP_USER = 'SIGNUP_USER';
 export const GETUSER_ERROR = 'GETUSER_ERROR';
 export const PRESIGNED_URL = 'presigned_url';
 
-const createPresignedUrl = async (currentFile:any, byte_size: any, checksum: any) => {
+export const createPresignedUrl = async (currentFile:any, byte_size: any, checksum: any) => {
   const file = {
     filename: currentFile.name,
     byte_size,
@@ -72,7 +72,7 @@ export const loginUser = (user: UserLogin) => (dispatch: React.Dispatch<UserActi
         localStorage.setItem('token', response.data.token);
         dispatch({ type: LOGIN_USER, payload: response.data });
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/tips');
         });
       }
     })
@@ -121,7 +121,7 @@ export const signupUser = (users: UserSignup) => async (dispatch: React.Dispatch
         localStorage.setItem('token', response.data.token);
         dispatch({ type: SIGNUP_USER, payload: response.data });
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/tips');
         }, 1000);
       }
     }).catch((error) => {

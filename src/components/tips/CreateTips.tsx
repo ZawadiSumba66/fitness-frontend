@@ -14,7 +14,7 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
   const [description, setDescription] = useState('');
   const [benefits, setBenefits] = useState('');
   const [instructions, setInstructions] = useState('');
-  // const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,9 +23,14 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
       description,
       benefits,
       instructions,
+      image,
     };
     store.dispatch(createTip(tip));
     console.log(error);
+  };
+
+  const fileChange = (files: any) => {
+    setImage(files[0]);
   };
 
   return (
@@ -86,11 +91,16 @@ const CreateTips: React.FunctionComponent<any> = ({ error }: TipsCreate) => {
               className="form-control mt-3"
               data-rows="3"
             />
-            {/* <input
-              type="file"
-              name="image"
-              onChange={(e) => setImage(e.target.files[0])}
-            /> */}
+            <label htmlFor="avatar">
+              Choose an image
+              <input
+                type="file"
+                className="w-100 my-3"
+                onChange={(e) => fileChange(e.target.files)}
+                id="avatar"
+              />
+            </label>
+            <br />
             <input
               type="submit"
               className="button-orange mt-3 w-50 text-light btn font-weight-bold"

@@ -36,13 +36,13 @@ const SideBar: React.FunctionComponent<any> = ({ username, image }: UserSidebar)
             Dashboard
           </Link>
           <Link to="/tips" className="text-dark font-weight-bold text-decoration-none text-hover">
-            View Tips
+            View Exercises
           </Link>
           <Link
             to="/create-tip"
             className="text-dark font-weight-bold text-decoration-none text-hover my-3"
           >
-            Create Tip
+            Create an Exercise Tip
           </Link>
         </div>
       </div>

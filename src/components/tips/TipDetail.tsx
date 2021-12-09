@@ -8,10 +8,16 @@ import { fetchTip, UserTips } from '../../actions/tip_action';
 import createfavorite from '../../actions/favorite_action';
 
 type DetailTip = {
-  tip: UserTips
+  tip: {
+    title: string,
+    description: string,
+    benefits: string,
+    instructions: string,
+  }
+  tip_url: any,
 };
 
-const TipDetail: React.FunctionComponent<any> = ({ tip }: DetailTip) => {
+const TipDetail: React.FunctionComponent<any> = ({ tip, tip_url }: DetailTip) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,8 +33,7 @@ const TipDetail: React.FunctionComponent<any> = ({ tip }: DetailTip) => {
       </div>
     );
   }
-  console.log(id);
-
+  console.log(tip_url);
   if (!localStorage.getItem('token')) {
     navigate('/');
   }
@@ -63,6 +68,11 @@ const TipDetail: React.FunctionComponent<any> = ({ tip }: DetailTip) => {
               <h3 className="font-bold text-3xl mb-2 text-orange">
                 {tip.title}
               </h3>
+              <img
+                src={tip_url}
+                alt={tip.title}
+                className="d-block tip-image"
+              />
               <p>{tip.description}</p>
             </div>
 
@@ -101,12 +111,16 @@ const TipDetail: React.FunctionComponent<any> = ({ tip }: DetailTip) => {
 
 type TipState = {
   tipsReducer: {
-    tip: UserTips
+    tip: {
+      tip: UserTips
+      tip_url: any
+    }
   }
 };
 
 const mapStateToProps = (state: TipState) => ({
-  tip: state.tipsReducer.tip,
+  tip: state.tipsReducer.tip.tip,
+  tip_url: state.tipsReducer.tip.tip_url,
 });
 
 export default connect(mapStateToProps, null)(TipDetail);

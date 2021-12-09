@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 type TipDisplay = {
   title: string,
   description: string,
-  id: number
+  id: number,
 };
 
 const DisplayTip = ({

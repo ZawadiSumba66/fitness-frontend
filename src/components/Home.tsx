@@ -13,13 +13,13 @@ const Home: React.FunctionComponent<any> = () => (
           Best Gym
         </h1>
         <h1 className="text-2xl md:text-5xl text-white font-weight-bold">
-          Workout tips
+          Workout Exercises
         </h1>
 
         <p className="text-sm md:text-base mt-3 text-white">
-          Get to view the best fitness tips offered by our team from fitness.io for free.
+          Get to view the best workout exercises offered by our team from fitness.io for free.
           <br />
-          You can also create tips that you want and think can be beneficial to others.
+          You can also create exercises that you want and think can be beneficial to others.
           <br />
           Be the change you want to become and see your life transform today.
         </p>
