@@ -15,8 +15,10 @@ const SignUp = ({ backend }: UserProps) => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [image, setImage] = useState('');
+  const [submit, isSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    isSubmitting(true);
     e.preventDefault();
     if (image !== '') {
       const user = {
@@ -104,7 +106,7 @@ const SignUp = ({ backend }: UserProps) => {
           className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
           value="Sign up"
         >
-          Sign Up
+          {submit ? 'Loading...' : 'SignUp'}
         </button>
       </form>
       <p className="pt-5 text-center text-white">Have an account?</p>

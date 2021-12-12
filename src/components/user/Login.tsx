@@ -12,7 +12,9 @@ type LoginProps = {
 const Login = ({ errors }: LoginProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [submit, isSubmitting] = useState(false);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    isSubmitting(true);
     e.preventDefault();
     const user = {
       email,
@@ -61,7 +63,7 @@ const Login = ({ errors }: LoginProps) => {
           className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
           value="Sign up"
         >
-          login
+          {submit ? 'Loading...' : 'Login'}
         </button>
       </form>
       <p className="pt-5 text-center text-white">Don`t have an account?</p>
