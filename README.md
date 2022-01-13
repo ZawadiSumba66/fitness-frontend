@@ -9,7 +9,7 @@ This is a fitness tips application where users can get to see curated gym practi
 ## Built With
 - React and Redux
 - Tailwind CSS
-- AWS
+- Amazon S3
 - CSS
 - Bootstrap
 - Rails API
