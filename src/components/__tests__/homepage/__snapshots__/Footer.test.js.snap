@@ -6,19 +6,19 @@ exports[`matches the footer snapshot 1`] = `
     className="text-center mb-3"
   >
     <div
-      classNmae="logo"
+      className="logo"
     >
       <i
         className="fas fa-heartbeat"
       />
       <span
-        className="font-weight-bold"
+        className="font-bold"
       >
         KEEP IT FIT
       </span>
     </div>
     <p
-      className="text-secondary font-footer"
+      className="text-secondary font-footer pt-4"
     >
       Lafeyete Ave 156, Brooklyn USA
       <br />
@@ -41,7 +41,7 @@ exports[`matches the footer snapshot 1`] = `
       />
     </div>
     <span
-      className="font-footer"
+      className="font-footer pt-5 mb-3"
     >
       KeepFit 2021. All Rights Reserved.
     </span>

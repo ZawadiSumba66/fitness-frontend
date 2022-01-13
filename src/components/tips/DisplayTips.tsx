@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Carousel, Spinner } from 'react-bootstrap';
-import { fetchTips } from '../../actions/tip_action';
+import { fetchTips, UserTips } from '../../actions/tip_action';
 import DisplayTip from './DisplayTip';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
 
-const DisplayTips = ({ tips }) => {
+type TipsDisplay = {
+  tips: UserTips[]
+};
+
+const DisplayTips: React.FunctionComponent<any> = ({ tips }: TipsDisplay) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTips());
@@ -29,10 +32,10 @@ const DisplayTips = ({ tips }) => {
           <Flash />
         </div>
       </div>
-      <div className="d-flex flex-column mb-5">
+      <div className="d-flex flex-column mt-10 mb-5">
         <div>
-          <Carousel>
-            {tips.map((tip) => (
+          <Carousel data-ride="carousel">
+            {tips.map((tip: any) => (
               <Carousel.Item key={tip.id}>
                 <DisplayTip
                   key={tip.id}
@@ -49,10 +52,12 @@ const DisplayTips = ({ tips }) => {
   );
 };
 
-const mapStateToProps = (state) => ({ tips: state.tipsReducer.tips });
-
-DisplayTips.propTypes = {
-  tips: PropTypes.instanceOf(Array).isRequired,
+type StateTips = {
+  tipsReducer: {
+    tips: string[]
+  }
 };
+
+const mapStateToProps = (state: StateTips) => ({ tips: state.tipsReducer.tips });
 
 export default connect(mapStateToProps, null)(DisplayTips);

@@ -1,17 +1,29 @@
-import PropTypes from 'prop-types';
+import { Link } from '@reach/router';
 
-const FavoriteTip = ({ title, description, handleRemove }) => (
+type TipFavorite = {
+  title: string,
+  description: string,
+  id: number,
+  handleRemove: () => void;
+};
+
+const FavoriteTip = ({
+  title, description, handleRemove, id,
+}: TipFavorite) => (
   <div className="col-md-4 my-2">
     <div className="shadow rounded favourites__card mx-auto pl-3">
       <div className="position-relative">
         <h3 className="text-center font-weight-bold test-name">
-          {title}
+          <Link to={`/tips/${id}`}>
+            {' '}
+            {title}
+          </Link>
         </h3>
         <p>{description}</p>
         <button
           onClick={handleRemove}
           type="button"
-          className="button-orange font-weight-bold text-light btn"
+          className="button-orange font-weight-bold text-light btn mt-2"
         >
           Remove
         </button>
@@ -28,11 +40,5 @@ const FavoriteTip = ({ title, description, handleRemove }) => (
     </div>
   </div>
 );
-
-FavoriteTip.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  handleRemove: PropTypes.func.isRequired,
-};
 
 export default FavoriteTip;

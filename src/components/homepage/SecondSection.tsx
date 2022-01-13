@@ -12,7 +12,7 @@ const SecondSection = () => (
     <div className="row align-items-center">
       <div className="col-md-6">
         <div className="pl-3">
-          <h2 className="text-3xl md:text-3xl font-bold">
+          <h2 className="text-2xl md:text-3xl font-bold">
             Change your life today for a better tomorrow
           </h2>
           <p className="text-sm-gray mb-5 mt-3">

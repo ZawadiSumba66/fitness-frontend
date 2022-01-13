@@ -1,16 +1,21 @@
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { connect, useDispatch } from 'react-redux';
 import SideBar from './SideBar';
-import { fetchUser } from '../../actions/user_action';
+import { fetchUser, UserSignup } from '../../actions/user_action';
 
-const DashboardLeft = ({ user }) => {
+type UserDashboardLeft = {
+  avatar: any
+  user: {
+    username: string,
+  }
+};
+
+const DashboardLeft: React.FunctionComponent<any> = ({ user, avatar }: UserDashboardLeft) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
-
   if (!user) {
     return (
       <div className="d-flex justify-content-center align-items-center spinner__wrapper">
@@ -27,19 +32,25 @@ const DashboardLeft = ({ user }) => {
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
           username={user.username}
-          image={user.image}
+          image={avatar}
         />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.userReducer.user.user,
-});
-
-DashboardLeft.propTypes = {
-  user: PropTypes.instanceOf(Array).isRequired,
+type UserState = {
+  userReducer: {
+    user: {
+      user: UserSignup,
+      avatar_url: any,
+    }
+  }
 };
+
+const mapStateToProps = (state: UserState) => ({
+  user: state.userReducer.user.user,
+  avatar: state.userReducer.user.avatar_url,
+});
 
 export default connect(mapStateToProps, null)(DashboardLeft);

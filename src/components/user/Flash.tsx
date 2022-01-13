@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Bus from '../../actions/bus';
-
+/* eslint-disable @typescript-eslint/no-shadow */
 const Flash = () => {
   const [visibility, setVisibility] = useState(false);
   const [message, setMessage] = useState('');
@@ -14,23 +14,13 @@ const Flash = () => {
 
       setTimeout(() => {
         setVisibility(false);
-      }, 4000);
+      }, 3000);
     });
   }, []);
-
-  useEffect(() => {
-    if (document.querySelector('.close') !== null) {
-      document.querySelector('.close')
-        .addEventListener('click', () => setVisibility(false));
-    }
-  });
 
   if (visibility) {
     return (
       <div className={`alert alert-${type} alert__wrapper w-100`}>
-        <span className="close">
-          <strong className="bg-dark">X</strong>
-        </span>
         <p>{message}</p>
       </div>
     );
@@ -40,3 +30,4 @@ const Flash = () => {
 };
 
 export default Flash;
+/* eslint-enable @typescript-eslint/no-shadow */

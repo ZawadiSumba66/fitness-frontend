@@ -24,7 +24,7 @@ exports[`matches the second section snapshot 1`] = `
         className="pl-3"
       >
         <h2
-          className="text-lg-black font-weight-bold"
+          className="text-2xl md:text-3xl font-bold"
         >
           Change your life today for a better tomorrow
         </h2>

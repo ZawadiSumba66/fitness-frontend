@@ -1,7 +1,7 @@
 const Footer = () => (
   <div>
     <div className="text-center mb-3">
-      <div classNmae="logo">
+      <div className="logo">
         <i className="fas fa-heartbeat" />
         <span className="font-bold">KEEP IT FIT</span>
       </div>

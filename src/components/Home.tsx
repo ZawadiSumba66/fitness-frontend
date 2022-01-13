@@ -4,22 +4,22 @@ import SecondSection from './homepage/SecondSection';
 import ThirdSection from './homepage/ThirdSection';
 import Footer from './homepage/Footer';
 
-const Home = () => (
+const Home: React.FunctionComponent<any> = () => (
   <div>
     <div className="main">
       <Header />
       <div className="main__wrapper-box pt-lg-5 px-3 mt-5">
-        <h1 className="text-xl md:text-5xl text-white font-weight-bold">
+        <h1 className="text-2xl md:text-5xl text-white font-weight-bold">
           Best Gym
         </h1>
-        <h1 className="text-xl md:text-5xl text-white font-weight-bold">
-          Workout tips
+        <h1 className="text-2xl md:text-5xl text-white font-weight-bold">
+          Workout Exercises
         </h1>
 
         <p className="text-sm md:text-base mt-3 text-white">
-          Get to view the best fitness tips offered by our team from fitness.io for free.
+          Get to view the best workout exercises offered by our team from fitness.io for free.
           <br />
-          You can also create tips that you want and think can be beneficial to others.
+          You can also create exercises that you want and think can be beneficial to others.
           <br />
           Be the change you want to become and see your life transform today.
         </p>

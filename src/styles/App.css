@@ -9,6 +9,11 @@ body {
   width: 100%;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
 .button-orange {
   background-color: #ec5200;
   border-radius: 20px;
@@ -58,6 +63,10 @@ body {
 
 .signup-form {
   padding-top: 50px;
+}
+
+.book-cover-image {
+  background-color: lightsalmon;
 }
 
 .text-orange {
@@ -146,6 +155,10 @@ body {
   height: 100vh;
 }
 
+.tip-image {
+  width: 550px;
+  height: 350px;
+}
 .infoCarousel__wrapper-desc-info {
   max-width: 600px;
   height: 50vh;

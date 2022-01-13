@@ -5,7 +5,7 @@ exports[`matches the Display Tip snapshot 1`] = `
   className="shadow rounded infoCarousel__wrapper-desc-info mx-auto mb-5"
 >
   <h3
-    className="text-center font-weight-bold test-class"
+    className="text-center font-bold text-3xl  test-class"
   />
   <div
     className="bg-white align-items-center p-3"
@@ -20,23 +20,27 @@ exports[`matches the Display Tip snapshot 1`] = `
     View more details
   </a>
   <div
-    className="pt-4 px-3"
+    className="d-flex pt-12"
   >
-    <span
-      className="fa fa-star checked"
-    />
-    <span
-      className="fa fa-star checked"
-    />
-    <span
-      className="fa fa-star checked"
-    />
-    <span
-      className="fa fa-star checked"
-    />
-    <span
-      className="fa fa-star text-sm-gray"
-    />
+    <div
+      className="px-3"
+    >
+      <span
+        className="fa fa-star checked"
+      />
+      <span
+        className="fa fa-star checked"
+      />
+      <span
+        className="fa fa-star checked"
+      />
+      <span
+        className="fa fa-star checked"
+      />
+      <span
+        className="fa fa-star text-sm-gray"
+      />
+    </div>
   </div>
 </div>
 `;

@@ -23,6 +23,11 @@ exports[`matches the create Tips snapshot 1`] = `
       className="rounded p-3 mt-4"
     >
       <div />
+      <div
+        className="errors"
+      >
+        <div />
+      </div>
     </div>
   </div>
   <div
@@ -32,44 +37,64 @@ exports[`matches the create Tips snapshot 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="row bg-white p-5"
+        className="bg-white p-5"
       >
-        <h3>
-          Create a Fitness Tip
+        <h3
+          className="pb-3 font-bold md:text-2xl text-xl text-orange"
+        >
+          Create a Workout Tip
         </h3>
+        <p
+          className="font-weight-bold"
+        >
+          Please fill all the fields below.
+        </p>
+        <br />
         <input
           className="form-control"
+          data-rows="3"
           name="title"
           onChange={[Function]}
           placeholder="Enter the Title"
-          rows="3"
           type="text"
           value=""
         />
         <textarea
           className="form-control mt-3"
+          data-rows="3"
           name="description"
           onChange={[Function]}
           placeholder="Enter a brief description"
-          rows="3"
           value=""
         />
         <textarea
           className="form-control mt-3"
+          data-rows="3"
           name="instructions"
           onChange={[Function]}
           placeholder="Add some instructions to follow"
-          rows="3"
           value=""
         />
         <textarea
           className="form-control mt-3"
+          data-rows="3"
           name="benefits"
           onChange={[Function]}
           placeholder="What are some of the benefits a user will gain"
-          rows="3"
           value=""
         />
+        <label
+          htmlFor="avatar"
+        >
+          Choose an image
+          <input
+            className="w-100 my-3"
+            id="avatar"
+            onChange={[Function]}
+            type="file"
+          />
+        </label>
+        <br />
         <input
           className="button-orange mt-3 w-50 text-light btn font-weight-bold"
           type="submit"

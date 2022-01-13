@@ -1,15 +1,20 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { loginUser } from '../../actions/user_action';
 import store from '../../store';
 import Flash from './Flash';
 
-const Login = ({ errors }) => {
+type LoginProps = {
+  errors: string;
+};
+
+const Login = ({ errors }: LoginProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = (e) => {
+  const [submit, isSubmitting] = useState(false);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    isSubmitting(true);
     e.preventDefault();
     const user = {
       email,
@@ -58,13 +63,13 @@ const Login = ({ errors }) => {
           className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
           value="Sign up"
         >
-          login
+          {submit ? 'Loading...' : 'Login'}
         </button>
       </form>
       <p className="pt-5 text-center text-white">Don`t have an account?</p>
       <Link
         to="/signup"
-        className="text-center text-white"
+        className="text-center text-dark font-bold"
       >
         SignUp
       </Link>
@@ -72,12 +77,14 @@ const Login = ({ errors }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+type LoginState = {
+  userReducer: {
+    login_backend_error: string,
+  }
+};
+
+const mapStateToProps = (state: LoginState) => ({
   errors: state.userReducer.login_backend_error,
 });
-
-Login.propTypes = {
-  errors: PropTypes.string.isRequired,
-};
 
 export default connect(mapStateToProps)(Login);

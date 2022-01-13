@@ -1,14 +1,24 @@
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { navigate } from '@reach/router';
-import PropTypes from 'prop-types';
+import { navigate, useParams } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
 import DashboardLeft from '../user/DashboardLeft';
 import Flash from '../user/Flash';
-import { fetchTip } from '../../actions/tip_action';
+import { fetchTip, UserTips } from '../../actions/tip_action';
 import createfavorite from '../../actions/favorite_action';
 
-const TipDetail = ({ tip, id }) => {
+type DetailTip = {
+  tip: {
+    title: string,
+    description: string,
+    benefits: string,
+    instructions: string,
+  }
+  tip_url: any,
+};
+
+const TipDetail: React.FunctionComponent<any> = ({ tip, tip_url }: DetailTip) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTip(id));
@@ -23,7 +33,7 @@ const TipDetail = ({ tip, id }) => {
       </div>
     );
   }
-
+  console.log(tip_url);
   if (!localStorage.getItem('token')) {
     navigate('/');
   }
@@ -58,6 +68,11 @@ const TipDetail = ({ tip, id }) => {
               <h3 className="font-bold text-3xl mb-2 text-orange">
                 {tip.title}
               </h3>
+              <img
+                src={tip_url}
+                alt={tip.title}
+                className="d-block tip-image"
+              />
               <p>{tip.description}</p>
             </div>
 
@@ -94,12 +109,18 @@ const TipDetail = ({ tip, id }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  tip: state.tipsReducer.tip,
+type TipState = {
+  tipsReducer: {
+    tip: {
+      tip: UserTips
+      tip_url: any
+    }
+  }
+};
+
+const mapStateToProps = (state: TipState) => ({
+  tip: state.tipsReducer.tip.tip,
+  tip_url: state.tipsReducer.tip.tip_url,
 });
 
-TipDetail.propTypes = {
-  tip: PropTypes.instanceOf(Array).isRequired,
-  id: PropTypes.number.isRequired,
-};
 export default connect(mapStateToProps, null)(TipDetail);
