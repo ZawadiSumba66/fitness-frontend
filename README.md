@@ -13,6 +13,7 @@ This is a fitness tips application where users can get to see curated gym practi
 - CSS
 - Bootstrap
 - Rails API
+- TypeScript
 
 ## Getting Started
 
