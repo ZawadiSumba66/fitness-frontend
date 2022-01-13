@@ -2,19 +2,21 @@
 
 exports[`matches the signup page snapshot 1`] = `
 <div
-  className="d-flex flex-column signup-form mx-5"
+  className="flex flex-1 flex-column signup-form px-10 md:px-60 fitness-image"
 >
   <div>
     <i
       className="fas fa-heartbeat"
     />
     <span
-      className="font-weight-bold"
+      className="font-bold"
     >
       KEEP IT FIT
     </span>
   </div>
-  <p>
+  <p
+    className="text-white font-bold pb-3"
+  >
      Hi there! Sign up and start looking for fitness healthy tips that you can practise
   </p>
   <div />
@@ -58,20 +60,33 @@ exports[`matches the signup page snapshot 1`] = `
       type="password"
       value=""
     />
+    <label
+      htmlFor="avatar"
+    >
+      Upload Avatar
+      <input
+        className="w-100 my-3"
+        id="avatar"
+        onChange={[Function]}
+        type="file"
+      />
+    </label>
     <br />
-    <input
+    <button
       className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
       type="submit"
       value="Sign up"
-    />
+    >
+      SignUp
+    </button>
   </form>
   <p
-    className="pt-5 text-center"
+    className="pt-5 text-center text-white"
   >
     Have an account?
   </p>
   <a
-    className="text-center"
+    className="text-center text-dark font-bold"
     href="/login"
     onClick={[Function]}
   >

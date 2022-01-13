@@ -21,7 +21,7 @@ exports[`matches the third section snapshot 1`] = `
     >
       <div>
         <h2
-          className="text-lg-black font-weight-bold"
+          className="text-2xl md:text-3xl font-bold"
         >
           We are here to guide you in every step.
         </h2>

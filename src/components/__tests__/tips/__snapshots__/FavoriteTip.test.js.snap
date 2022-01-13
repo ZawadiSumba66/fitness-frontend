@@ -12,10 +12,17 @@ exports[`matches the favorite tips snapshot 1`] = `
     >
       <h3
         className="text-center font-weight-bold test-name"
-      />
+      >
+        <a
+          href="/tips/undefined"
+          onClick={[Function]}
+        >
+           
+        </a>
+      </h3>
       <p />
       <button
-        className="button-orange font-weight-bold text-light btn"
+        className="button-orange font-weight-bold text-light btn mt-2"
         type="button"
       >
         Remove

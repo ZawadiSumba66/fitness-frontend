@@ -14,7 +14,7 @@ describe('fetchuser', () => {
     };
     axios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-    await expect(fetchUser('react')).resolves.toEqual(data);
+    await expect(fetchUser()).resolves.toEqual(data);
     done();
   });
 });

@@ -2,19 +2,21 @@
 
 exports[`matches the login page snapshot 1`] = `
 <div
-  className="d-flex flex-column signup-form justify-content-center mx-5"
+  className="d-flex flex-column signup-form justify-content-center px-10 md:px-60 fitness-image"
 >
   <div>
     <i
       className="fas fa-heartbeat"
     />
     <span
-      className="font-weight-bold"
+      className="font-bold"
     >
       KEEP IT FIT
     </span>
   </div>
-  <p>
+  <p
+    className="text-white font-bold"
+  >
      Welcome Back! Lets continue with our journey of keeping fit
   </p>
   <div />
@@ -42,19 +44,21 @@ exports[`matches the login page snapshot 1`] = `
       type="password"
       value=""
     />
-    <input
+    <button
       className="button-orange btn text-light text-uppercase font-weight-bold w-100 mt-4"
       type="submit"
-      value="Log in"
-    />
+      value="Sign up"
+    >
+      Login
+    </button>
   </form>
   <p
-    className="pt-5 text-center"
+    className="pt-5 text-center text-white"
   >
     Don\`t have an account?
   </p>
   <a
-    className="text-center"
+    className="text-center text-dark font-bold"
     href="/signup"
     onClick={[Function]}
   >

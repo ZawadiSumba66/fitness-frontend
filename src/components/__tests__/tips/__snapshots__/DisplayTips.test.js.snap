@@ -26,11 +26,12 @@ exports[`matches the Display Tips snapshot 1`] = `
     </div>
   </div>
   <div
-    className="d-flex flex-column mb-5"
+    className="d-flex flex-column mt-10 mb-5"
   >
     <div>
       <div
         className="carousel slide"
+        data-ride="carousel"
         onKeyDown={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
